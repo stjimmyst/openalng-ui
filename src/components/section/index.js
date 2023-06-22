@@ -26,7 +26,6 @@ export function OLSection1({ matches }) {
                 <Grid item xs={12}>
                     <OLBox>
                         <OLImageBox component="img" src="/eng/ielts.png" />
-                        <OLImageBox component="img" src="/eng/celpip.jpeg" />
                     </OLBox>
                 </Grid>
                 <Grid item xs={12}>

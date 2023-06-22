@@ -13,7 +13,6 @@ const Home = () => {
       <OLSection1></OLSection1>
       <OLSection2></OLSection2>
       <OLSection3></OLSection3>
-      <OLSection4></OLSection4>
       
     </Container>
     </ThemeProvider>

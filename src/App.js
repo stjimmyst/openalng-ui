@@ -54,7 +54,7 @@ function App() {
   <Appbar/>
     <Routes>
     <Route index element={<Home/>}/>
-    <Route path="/about" element={<About />} />
+    {/* <Route path="/about" element={<About />} /> */}
     <Route path="/speaking" element={<Speaking />} />
     <Route path="/writing" element={<Writing />} />
   </Routes>

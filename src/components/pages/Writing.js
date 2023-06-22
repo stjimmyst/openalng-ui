@@ -26,13 +26,19 @@ const Writing = () => {
   const [overallResponseScore, setOverallResponseScore] = useState("");
 
   const [currentAnswer, setCurrentAnswer] = useState("")
-  const [taskDefinition, setTaskDefinition] = useState('press the button to generate question')
+  const [taskDefinition, setTaskDefinition] = useState('Past your own question or press the button to generate a random question')
   const HandleChange = e => {
     const inp = e.target.value;
     setCurrentAnswer(inp)
     const words = inp.split(" ").length
     setTitle("word count: " + words.toString())
 
+  }
+
+  const HandleChangeQuestion = e => {
+    const inp = e.target.value;
+    console.log(inp)
+    setTaskDefinition(inp)
   }
   const [showResults, setShowResults] = useState('hidden')
   const handleClose = (visible) => {
@@ -121,7 +127,7 @@ const Writing = () => {
                 multiline
                 rows={5}
                 value={taskDefinition}
-                fullWidth="true"
+                fullWidth="true" onChange={HandleChangeQuestion}
               />
               {/* <Typography variant='h7'>{taskDefinition}</Typography> */}
             </OLBox>
@@ -199,26 +205,26 @@ const Writing = () => {
           </Grid>
           <Grid item xs={2}>
           <Box justifyContent='center' alignItems='center'>
-              <Typography>Task Achevements</Typography>
-              <Typography>{taResponseScore}</Typography>
+          <Box height={100}><Typography align='center'>Task Achevements</Typography></Box>
+              <Box ><Typography align='center'>{taResponseScore}</Typography></Box>
             </Box>
           </Grid>
           <Grid item xs={2}>
             <Box justifyContent='center' alignItems='center' flexDirection="column">
-              <Typography>Coherence & Cohesion</Typography>
-              <Typography>{ccResponseScore}</Typography>
+            <Box height={100}><Typography align='center'>Coherence & Cohesion</Typography></Box>
+              <Box><Typography align='center'>{ccResponseScore}</Typography></Box>
             </Box>
           </Grid>
           <Grid item xs={2}>
           <Box justifyContent='center' alignItems='center' display="column">
-              <Typography>Lexical Resource</Typography>
-              <Typography>{lrResponseScore}</Typography>
+          <Box height={100}><Typography align='center'>Lexical Resource</Typography></Box>
+          <Box><Typography align='center'>{lrResponseScore}</Typography></Box>
             </Box>
           </Grid>
           <Grid item xs={2}>
           <Box justifyContent='center' alignItems='center'>
-              <Typography>Grammatical Range and Accuracy</Typography>
-              <Typography>{graResponseScore}</Typography>
+              <Box height={100}><Typography align='center'>Grammatical Range and Accuracy</Typography></Box>
+              <Box><Typography align='center'>{graResponseScore}</Typography></Box>
             </Box>
           </Grid>
           <Grid item xs={2}>
