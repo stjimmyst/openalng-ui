@@ -1,0 +1,58 @@
+.home-how-it-works-speaking-container {
+  width: 100%;
+  height: 717px;
+  display: flex;
+  position: relative;
+  align-items: flex-start;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.home-how-it-works-speaking-container2 {
+  width: 100%;
+  height: 20%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+}
+.home-how-it-works-speaking-how-it-works-heading {
+  align-self: center;
+}
+.home-how-it-works-speaking-container3 {
+  width: 1025px;
+  height: 173px;
+  display: flex;
+  align-self: flex-start;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+}
+.home-how-it-works-speaking-how-it-works-description {
+  align-self: center;
+  text-align: center;
+}
+.home-how-it-works-speaking-container4 {
+  width: 1024px;
+  height: 234px;
+  display: flex;
+  align-self: center;
+  align-items: flex-end;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.home-how-it-works-speaking-container5 {
+  width: 100%;
+  height: 204px;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: center;
+}
+.home-how-it-works-speaking-button {
+  color: var(--dl-color-gray-black);
+  text-transform: uppercase;
+  text-decoration: none;
+}
+
+

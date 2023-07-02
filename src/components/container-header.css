@@ -1,0 +1,11 @@
+.container-header-container {
+  width: 100%;
+  display: flex;
+  position: relative;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+}
+.container-header-root-class-name {
+  height: 20%;
+}

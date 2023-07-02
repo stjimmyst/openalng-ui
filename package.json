@@ -1,35 +1,28 @@
 {
   "proxy": "http://10.24.130.71:5000",
-  "name": "openlang-ui",
-  "version": "0.1.0",
+  "name": "openlang",
+  "version": "1.0.0",
   "private": true,
   "dependencies": {
-    "@emotion/react": "^11.11.0",
-    "@emotion/styled": "^11.11.0",
-    "@fontsource/montez": "^5.0.1",
-    "@mui/icons-material": "^5.11.16",
-    "@mui/material": "^5.13.2",
-    "@testing-library/jest-dom": "^5.16.5",
-    "@testing-library/react": "^13.4.0",
-    "@testing-library/user-event": "^13.5.0",
-    "react": "^18.2.0",
+    "@craco/craco": "^7.0.0-alpha.0",
+    "@react-oauth/google": "^0.11.0",
+    "axios": "^1.4.0",
+    "js-cookie": "^3.0.5",
+    "prop-types": "15.7.2",
+    "react": "^17.0.2",
     "react-audio-voice-recorder": "^1.2.1",
-    "react-dom": "^18.2.0",
-    "react-router-dom": "^6.12.1",
-    "react-scripts": "5.0.1",
-    "web-vitals": "^2.1.4"
+    "react-dom": "^17.0.2",
+    "react-helmet": "^6.1.0",
+    "react-router-dom": "^5.2.0"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "start": "craco start",
+    "build": "craco build",
+    "test": "craco test --env=jsdom",
+    "eject": "craco eject"
   },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
+  "engines": {
+    "node": "16.x"
   },
   "browserslist": {
     "production": [
@@ -42,5 +35,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "react-scripts": "^5.0.1"
   }
 }

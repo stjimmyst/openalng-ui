@@ -1,0 +1,16 @@
+.improvement-card-container {
+  gap: 15;
+  width: 352px;
+  height: 400px;
+  display: flex;
+  flex-wrap: wrap;
+  box-shadow: 5px 5px 10px 0px #898282;
+  align-items: center;
+  border-width: 2;
+  flex-direction: column;
+  justify-content: center;
+  border-radius: 20px;
+  padding: 2%;
+}
+
+

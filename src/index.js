@@ -1,20 +1,29 @@
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
-import React from 'react';
-import { BrowserRouter } from 'react-router-dom';
+import React from 'react'
+import ReactDOM from 'react-dom'
+import { BrowserRouter as Router, Route } from 'react-router-dom'
+import { GoogleOAuthProvider } from '@react-oauth/google';
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
-  <React.StrictMode>
-  <BrowserRouter>
-    <App />
-  </BrowserRouter>
-</React.StrictMode>
-);
+import './style.css'
+import Speaking from './views/speaking'
+import Home from './views/home'
+import Writing from './views/writing'
+import Login from './views/login'
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+const App = () => {
+  return (
+    <GoogleOAuthProvider clientId="1057108656456-9kmemaalionafnig1ilp3lvk64c8cmdn.apps.googleusercontent.com">
+    <React.StrictMode>
+    <Router>
+      <div>
+        <Route component={Speaking} exact path="/speaking" />
+        <Route component={Home} exact path="/" />
+        <Route component={Writing} exact path="/writing" />
+        <Route component={Login} exact path="/login" />
+      </div>
+    </Router>
+    </React.StrictMode>
+    </GoogleOAuthProvider>
+  )
+}
+
+ReactDOM.render(<App />, document.getElementById('app'))
