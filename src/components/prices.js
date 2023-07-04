@@ -28,7 +28,7 @@ const Prices = (props) => {
                             <span className="home-text06">2 Writing</span>
                             <span className="home-text07">1 Speaking</span>
                             <span className="home-text08">1 IELTS factor analysis</span>
-                            <button className="price-button button">Learn More</button>
+                            <button className="price-button button" type="button">TRY</button>
                         </div>
                         {/* <div className="PriceCard">
               <span className="home-text09">&quot;Intermediate&quot;</span>
@@ -36,7 +36,8 @@ const Prices = (props) => {
               <span className="home-text11">Unlimit Writing</span>
               <span className="home-text12">1 Speaking</span>
               <span className="home-text13">Full ILETS factor analysis</span>
-              <button className="home-button2 button">Learn More</button>
+              <a href="https://buy.stripe.com/test_fZeg02dNAbio6ticMM" class="button" target="_blank">BUY</a>
+                            
             </div>
             <div className="home-container12 PriceCard">
               <span className="home-text14">&quot;Fluency&quot;</span>
@@ -47,7 +48,8 @@ const Prices = (props) => {
               <span className="home-text19">
                 Improvements and error checking
               </span>
-              <button className="home-button3 button">Learn More</button>
+              <a href="https://buy.stripe.com/test_cN24hkbFs5Y4eZO289" class="button" target="_blank">BUY</a>
+                            
             </div> */}
                     </div>
                 </div>
