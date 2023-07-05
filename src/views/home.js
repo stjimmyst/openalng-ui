@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 
 import { Helmet } from 'react-helmet'
 
@@ -6,18 +6,22 @@ import MenuComponent from '../components/menu-component'
 import HomeHowItWorksWriting from '../components/home-how-it-works-writing'
 import HomeHowItWorksSpeaking from '../components/home-how-it-works-speaking'
 import './home.css'
-import { GetUserName } from '../components/functions';
+import { GetUserName, scrollElement } from '../components/functions';
 import Prices from '../components/prices'
 
 const Home = (props) => {
 
+  const ref = useRef(null);
+  const priceRef = useRef(null);
 
-  function scrollElement(inpname){
-    if (inpname != null) {
-    var element = document.getElementById(inpname);
-    element.scrollIntoView();
-    }
-   }
+  function handleClick() {
+    ref.current.focus();
+  }
+
+
+
+
+
 
   return (
     <div className="home-container">
@@ -26,7 +30,7 @@ const Home = (props) => {
         <meta property="og:title" content="OpenLang" />
       </Helmet>
       <div className="home-menu-container menuecontainer">
-        <MenuComponent rootClassName="menu-component-root-class-name2"></MenuComponent>
+        <MenuComponent rootClassName="menu-component-root-class-name2" ref={ref}></MenuComponent>
       </div>
       <div className="home-about-container">
         <div id="AboutHeader" className="home-container01 OlContainerContent">
@@ -59,7 +63,7 @@ const Home = (props) => {
       </div>
       <HomeHowItWorksWriting rootClassName="home-how-it-works-writing-root-class-name"></HomeHowItWorksWriting>
       <HomeHowItWorksSpeaking rootClassName="home-how-it-works-speaking-root-class-name1"></HomeHowItWorksSpeaking>
-      <Prices username={GetUserName()}></Prices>
+      <Prices username={GetUserName()} ref={ref} id="PricingContainer"></Prices>
       
     </div>
   )

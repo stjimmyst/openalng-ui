@@ -10,7 +10,8 @@ import './menu-component.css'
 import Login from '../views/login'
 import Cookies from 'js-cookie';
 
-const MenuComponent = (props) => {
+const MenuComponent = React.forwardRef((props, ref) => {
+
   const [ user, setUser ] = useState([]);
     const [ profile, setProfile ] = useState([]);
 
@@ -26,6 +27,11 @@ const MenuComponent = (props) => {
           profile: inpprofile
         })
       });
+      const data = await response.json();
+    let json = JSON.stringify(data);
+    console.log(json);
+    Cookies.set('userlevel', data.level);
+
     }
   
 
@@ -70,6 +76,7 @@ const MenuComponent = (props) => {
         googleLogout();
         Cookies.remove('usertoken');
         Cookies.remove('userprofile');
+        Cookies.remove('userlevel')
         setProfile([]);
     };
 
@@ -101,10 +108,13 @@ const MenuComponent = (props) => {
 //                 </div>
                 <div className="menu-component-btn-group">
                 <div className="menu-component-container1">
+                  <a href="https://billing.stripe.com/p/login/test_aEU4hobng6OCaUU7ss" target="_blank">
                   <img
                     src={profile.picture}
                     className="menu-component-image1"
+                    
                   />
+                  </a>
                 </div>
                 <div className="menu-component-container2">
                   <button className="button" onClick={() => logOut()}>Log Out</button>
@@ -122,14 +132,14 @@ const MenuComponent = (props) => {
                 <div className="menu-component-container1">
                 </div>
                 <div className="menu-component-container2">
-                <button className="menu-component-login button" onClick={() => login()}>Log In </button>
+                <button className="menu-component-login button" onClick={() => login()} ref={ref}>Log In </button>
                 </div>
               </div>
             )}
       </header>
     </div>
   )
-}
+})
 
 MenuComponent.defaultProps = {
   rootClassName: '',

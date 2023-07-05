@@ -38,6 +38,7 @@ const Login = () => {
     const logOut = () => {
         googleLogout();
         setProfile(null);
+        location.reload()
     };
 
     return (
