@@ -7,6 +7,7 @@ import ContainerScore from './container-score'
 import ContainerTextResult from './container-text-result'
 import './card-result.css'
 import { logIn } from './functions'
+import { GetUserName } from './functions'
 
 const PriceCard = React.forwardRef((props, ref) => {
 
@@ -17,19 +18,22 @@ const PriceCard = React.forwardRef((props, ref) => {
 
         }
       }
-
-      function getHref(props) {
-        if (ref.current!= null) {
-            return ""
+      function getButton(props) {
+        console.log(ref)
+        console.log(ref.current)
+        if (GetUserName()=="undefined") {
+            console.log("only login without href")
+            return (
+            <a class="button" target="_blank" onClick={handleClick} >{props.buttonText}</a>
+            )
         } else {
-            return props.buttonLink
+            console.log("href without login")
+            return (
+                <a href={props.buttonLink} class="button" target="_self">{props.buttonText}</a>   
+            )
         }
       }
-      function getTarget(props) {
-        if (ref.current!=null) {
-            return "_blank"
-        } else return "_self"
-      }
+
     function featuresRender(features) {
         console.log(features)
         return Object.keys(features).map((key, v) => {
@@ -67,7 +71,7 @@ const PriceCard = React.forwardRef((props, ref) => {
                 {featuresRender(props.features)}
             </div>
             <div className='price-card-plan-button-container'>
-                <a href={getHref(props)} class="button" target={getTarget(props)} onClick={handleClick}>{props.buttonText}</a>
+                {getButton(props)}
             </div>
             {/* <button className="price-button button" type="button" onClick={handleClick}>LOGIN</button> */}
             {/* <span className="home-text09">{props.planName}</span> */}
