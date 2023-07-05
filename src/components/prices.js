@@ -33,9 +33,9 @@ const Prices = React.forwardRef((props, ref) => {
                             <span className="home-text08">1 IELTS factor analysis</span>
                             <button className="price-button button" type="button">TRY</button>
                         </div> */}
-            <PriceCard planName="Beginner" price={"0$"} features={features_free} buttonText="TRY" ref={ref} buttonLink="/writing"></PriceCard>
-            <PriceCard planName="Intermediate" price={"14.99$"} features={features_intermediate} buttonText="BUY" ref={ref} buttonLink="https://buy.stripe.com/test_8wM8xAfVI728dVKdQS"></PriceCard>
-            <PriceCard planName="Advanced" price={"24.99$"} features={features_advanced} buttonText="BUY" ref={ref} buttonLink="https://buy.stripe.com/test_5kAaFIcJwfyEcRG4gj"></PriceCard>
+            <PriceCard planName="Beginner" price={"0$"} features={features_free} buttonText="TRY" ref={ref} buttonLink="/writing" target="_self"></PriceCard>
+            <PriceCard planName="Intermediate" price={"14.99$"} features={features_intermediate} buttonText="BUY" ref={ref} buttonLink="https://buy.stripe.com/test_8wM8xAfVI728dVKdQS" target="_blank"></PriceCard>
+            <PriceCard planName="Advanced" price={"24.99$"} features={features_advanced} buttonText="BUY" ref={ref} buttonLink="https://buy.stripe.com/test_5kAaFIcJwfyEcRG4gj" target="_blank"></PriceCard>
             
             {/* <div className="home-container12 PriceCard">
               <span className="home-text14">&quot;Fluency&quot;</span>

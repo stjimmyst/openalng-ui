@@ -29,7 +29,7 @@ const PriceCard = React.forwardRef((props, ref) => {
         } else {
             console.log("href without login")
             return (
-                <a href={props.buttonLink} class="button" target="_self">{props.buttonText}</a>   
+                <a href={props.buttonLink} class="button" target={props.target}>{props.buttonText}</a>   
             )
         }
       }
