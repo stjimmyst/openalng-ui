@@ -8,6 +8,9 @@ import Speaking from './views/speaking'
 import Home from './views/home'
 import Writing from './views/writing'
 import Login from './views/login'
+import Privacy from './views/privacy'
+import Terms from './views/terms';
+import DMCA from './views/dmca';
 
 const App = () => {
   return (
@@ -19,6 +22,9 @@ const App = () => {
         <Route component={Home} exact path="/" />
         <Route component={Writing} exact path="/writing" />
         <Route component={Login} exact path="/login" />
+        <Route component={Privacy} exact path="/privacy"/>
+        <Route component={Terms} exact path="/terms"/>
+        <Route component={DMCA} exact path="/dmca"/>
       </div>
     </Router>
     </React.StrictMode>

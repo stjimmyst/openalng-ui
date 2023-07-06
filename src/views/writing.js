@@ -12,6 +12,7 @@ import CardResult from '../components/card-result'
 import '../components/writing-result-container.css'
 import ImprovementCard from '../components/improvement-card'
 import Overall from '../components/ovevrall';
+import Footer from '../components/footer';
 
 
 
@@ -182,6 +183,7 @@ const Writing = (props) => {
 
 
   return (
+    <div>
     <div className="writing-container">
       <Helmet>
         <title>Writing - OpenLang</title>
@@ -285,6 +287,9 @@ const Writing = (props) => {
       </div>
       ): (<div/>)
       }
+      
+    </div>
+    <Footer></Footer>
     </div>
   )
 }

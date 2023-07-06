@@ -8,6 +8,7 @@ import HomeHowItWorksSpeaking from '../components/home-how-it-works-speaking'
 import './home.css'
 import { GetUserName, scrollElement } from '../components/functions';
 import Prices from '../components/prices'
+import Footer from '../components/footer'
 
 const Home = (props) => {
 
@@ -48,11 +49,11 @@ const Home = (props) => {
               src="/ielts-logo-200h.png"
               className="home-image"
             />
-            <img
+            {/* <img
               alt="image"
               src="/celpip_logo_dark-200h.png"
               className="home-image1"
-            />
+            /> */}
           </div>
           <div className="home-container05">
             <button type="button" className="home-button button" onClick={()=>{scrollElement("WritingContainer")}}>
@@ -64,6 +65,7 @@ const Home = (props) => {
       <HomeHowItWorksWriting rootClassName="home-how-it-works-writing-root-class-name"></HomeHowItWorksWriting>
       <HomeHowItWorksSpeaking rootClassName="home-how-it-works-speaking-root-class-name1"></HomeHowItWorksSpeaking>
       <Prices username={GetUserName()} ref={ref} id="PricingContainer"></Prices>
+      <Footer></Footer>
       
     </div>
   )

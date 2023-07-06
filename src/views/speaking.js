@@ -14,6 +14,7 @@ import CardResult from '../components/card-result'
 import '../components/speaking-result-container.css'
 import ImprovementCard from '../components/improvement-card'
 import Overall from '../components/ovevrall';
+import Footer from '../components/footer';
 
 const Speaking = (props) => {
 
@@ -150,6 +151,7 @@ const Speaking = (props) => {
   }
 
   return (
+    <div>
     <div className="speaking-container">
       <Helmet>
         <title>Speaking - OpenLang</title>
@@ -256,6 +258,8 @@ const Speaking = (props) => {
       </div>
       ): (<div/>)
       }
+      </div>
+      <Footer></Footer>
       </div>
   )
 }

@@ -31,6 +31,8 @@ const MenuComponent = React.forwardRef((props, ref) => {
     let json = JSON.stringify(data);
     console.log(json);
     Cookies.set('userlevel', data.level);
+    console.log(`${process.env.NODE_ENV}`)
+    console.log(`${process.env.REACT_APP_USER_SUBSCRIPTIONS}`)
 
     }
   
@@ -59,7 +61,7 @@ const MenuComponent = React.forwardRef((props, ref) => {
                         }
                     })
                     .then((res) => {
-                      Cookies.set('userprofile', res.data.id, { expires: 7 });
+                      Cookies.set('userprofile', res.data.id);
                         setProfile(res.data);
                         LoginBackend(res.data);
 
@@ -108,7 +110,7 @@ const MenuComponent = React.forwardRef((props, ref) => {
 //                 </div>
                 <div className="menu-component-btn-group">
                 <div className="menu-component-container1">
-                  <a href="https://billing.stripe.com/p/login/test_aEU4hobng6OCaUU7ss" target="_blank">
+                  <a href={process.env.REACT_APP_USER_SUBSCRIPTIONS} target="_blank">
                   <img
                     src={profile.picture}
                     className="menu-component-image1"
