@@ -1097,7 +1097,7 @@ ul {
   }
 
   .prices__element {
-    width: calc(50% - 30px)
+    width: calc(50% - 10px)
   }
 
   .prices__row {
