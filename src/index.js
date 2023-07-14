@@ -4,13 +4,13 @@ import { BrowserRouter as Router, Route } from 'react-router-dom'
 import { GoogleOAuthProvider } from '@react-oauth/google';
 
 import './style.css'
-import Home from './views/Home'
-import Writing from './views/Writing';
-import Speaking from './views/Speaking';
-import Contacts from './views/Contacts';
-import DMCA from './views/DMCA';
-import Privacy from './views/Privacy';
-import Terms from './views/Terms';
+import Home from './views/home'
+import Writing from './views/writing';
+import Speaking from './views/speaking';
+import Contacts from './views/contacts';
+import DMCA from './views/dmca';
+import Privacy from './views/privacy';
+import Terms from './views/terms';
 
 const App = () => {
   return (

@@ -1,10 +1,10 @@
 import React, { useState, useEffect, useRef } from 'react'
-import Header from '../components/Header/Header'
-import IntroSection from '../components/IntroSection/IntroSection'
-import WritingSection from '../components/WritingSection/WritingSection'
-import SpeakingSection from '../components/SpeakingSection/SpeakingSection'
-import Prices from '../components/Prices/Prices'
-import Footer from '../components/Footer/Footer'
+import Header from '../components/header/header'
+import IntroSection from '../components/intro_section/intro_section'
+import WritingSection from '../components/writing_section/writing_section'
+import SpeakingSection from '../components/speaking_section/speaking_section'
+import Prices from '../components/prices/prices'
+import Footer from '../components/footer/footer'
 
 const Home = (props) => {
     const ref = useRef(null);
