@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useRef } from 'react'
-import MobNav from '../components/MobNav/MobNav'
 import Header from '../components/Header/Header'
 import IntroSection from '../components/IntroSection/IntroSection'
 import WritingSection from '../components/WritingSection/WritingSection'
