@@ -1,297 +1,280 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react'
+import MobNav from '../components/MobNav/MobNav'
+import Header from '../components/Header/Header'
 
-import { Helmet } from 'react-helmet'
-
-import MenuComponent from '../components/menu-component'
-import WritingResultContainer from '../components/writing-result-container'
-import ImprovementsContainer from '../components/improvements-container'
-import './writing.css'
+import Footer from '../components/Footer/Footer'
 import Cookies from 'js-cookie';
-import { GetUserName,getCardColor, GetStubText, } from '../components/functions';
-import CardResult from '../components/card-result'
-import '../components/writing-result-container.css'
-import ImprovementCard from '../components/improvement-card'
-import Overall from '../components/ovevrall';
-import Footer from '../components/footer';
-
-
+import { GetEstimation, GetUserName, getCardColor, getBlurColor, GetStubText,GetOverallScoreText,GetBandScoreText } from '../components/functions'
 
 const Writing = (props) => {
-  const [showResults, setShowResults] = useState(false)
-  const [time, setTime] = useState(40 * 60); // Время в секундах
-  const [isRunning, setIsRunning] = useState(false);
-  const [userLevel, setUserLevel] = useState(0)
-  const [lrScore, setLrScore] = useState(4)
-  const [ccScore, setCcScore] = useState(4)
-  const [taScore, setTaScore] = useState(4)
-  const [graScore, setGraScore] = useState(4)
-  const [overall, setOverall] = useState(4)
-  const [lrComment, setLrComment] = useState("")
-  const [ccComment, setCcComment] = useState("")
-  const [taComment, setTaComment] = useState("")
-  const [graComment, setGraComment] = useState("")
-  const [lrStub, setLrStub] = useState(false)
-  const [ccStub, setCcStub] = useState(false)
-  const [taStub, setTaStub] = useState(false)
-  const [graStub, setGraStub] = useState(false)
-  const [selfimprovementsComment, setSelfimprovementsComment] = useState("")
-  const [errorsComment, setErrorsComment] = useState("")
+    const [writingResults, setWritingResults] = useState(GetEstimation('WritingEstimationResult'))
+    const [showResults, setShowResults] = useState(false)
+    const [taskDefinition, setTaskDefinition] = useState(getTaskDefinition())
+    const [currentAnswer, setCurrentAnswer] = useState(getCurrentAnswer())
+    const [wordCount, setWordCount] = useState("0");
+    const [overall, setOverall] = useState(0)
+    const [time, setTime] = useState(40 * 60); // Время в секундах
+    const [isRunning, setIsRunning] = useState(false);
+    const [showInProgress, setShowInProgress] = useState(false)
 
-
-  function updateResults(estimation) {
-    setUserLevel(estimation.body.level)
-    let tascore = parseInt(estimation.body.ta.band)
-    let ccscore = parseInt(estimation.body.cc.band)
-    let lrscore = parseInt(estimation.body.lr.band)
-    let grascore = parseInt(estimation.body.gra.band)
-      setTaScore(tascore)
-      setCcScore(ccscore)
-      setLrScore(lrscore)
-      setGraScore(grascore)
-      setTaStub(estimation.body.ta.stub)
-      setCcStub(estimation.body.cc.stub)
-      setLrStub(estimation.body.lr.stub)
-      setGraStub(estimation.body.gra.stub)
-      setTaComment(estimation.body.ta.comment)
-      setCcComment(estimation.body.cc.comment)
-      setLrComment(estimation.body.lr.comment)
-      setGraComment(estimation.body.gra.comment)
-      setSelfimprovementsComment(estimation.body.selfimprovements.comment)
-      setErrorsComment(estimation.body.errors.comment)
-      setOverall(Math.round(((tascore + ccscore + grascore + lrscore) / 4) * 2) / 2)
-      console.log("overall calculated: "+ overall)
-  }
-
-  function GetOverallBlur(userlevel) {
-    if (userlevel > 0) {
-        return "Heading"
-    } else {
-        return "Heading blured"
-    }
-}
-  
-
-  useEffect(() => {
-    let timerId;
-
-    if (isRunning && time > 0) {
-      timerId = setInterval(() => {
-        setTime((prevTime) => prevTime - 1);
-      }, 1000);
+    function checkShowResults() {
+        if (writingResults == "undefined") {
+            return false
+        } else {
+            return true
+        }
     }
 
-    return () => {
-      clearInterval(timerId);
-    };
-  }, [isRunning, time]);
+    useEffect(() => {
+        console.log("writingResults was updated")
+        setShowResults(checkShowResults)
+    }, [writingResults])
+    useEffect(() => {
+        console.log("overall was calculated to " + overall)
+    }, [overall])
+    useEffect(() => {
+        console.log("showResults changed value to " + showResults)
+        setOverall(calculateOverall)
 
-  const startTimer = () => {
-    setIsRunning(true);
-  };
-
-  const HandleChangeQuestion = e => {
-    const inp = e.target.value;
-    console.log(inp)
-    updateTaskDefinition(inp)
+    }, [showResults]);
+    useEffect(() => {
+        let timerId;
     
-  }
+        if (isRunning && time > 0) {
+          timerId = setInterval(() => {
+            setTime((prevTime) => prevTime - 1);
+          }, 1000);
+        }
+    
+        return () => {
+          clearInterval(timerId);
+        };
+      }, [isRunning, time]);
+    
+      const startTimer = () => {
+        setIsRunning(true);
+      };
 
-  const formatTime = (time) => {
-    const minutes = Math.floor(time / 60);
-    const seconds = time % 60;
+      const formatTime = (time) => {
+        const minutes = Math.floor(time / 60);
+        const seconds = time % 60;
+    
+        if (isRunning) {
+          return `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+        } else {
+          return "Timer"
+        }
+      };
 
-    if (isRunning) {
-      return `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
-    } else {
-      return "Timer"
+
+    function calculateOverall() {
+        if (writingResults == "undefined") {
+            return 0
+        } else {
+            let l = Object.keys(writingResults.results.estimations).length
+            let tmp = 0
+
+            for (const key in writingResults.results.estimations) {
+                tmp = tmp + writingResults.results.estimations[key].band
+            }
+            return (Math.round((tmp / l) * 2) / 2)
+        }
     }
-  };
 
-  const [title, setTitle] = useState("0");
-  //const for Task Achevements
+    function generateBlockResult() {
+        return Object.keys(writingResults.results.estimations).map((key, v) => {
+            let card = "sec-info__element " + getCardColor(writingResults.results.estimations[key].band) + " " + getBlurColor(writingResults.results.estimations[key].stub)
 
-  const [currentAnswer, setCurrentAnswer] = useState(getCurrentAnswer())
-  const [taskDefinition, setTaskDefinition] = useState(getTaskDefinition())
-  const HandleChange = e => {
-    const inp = e.target.value;
-    updateCurrentAnswer(inp)
-    const words = inp.split(" ").length
-    setTitle(words.toString())
-
-  }
-
-  function updateTaskDefinition(inp) {
-    Cookies.set('TaskDefinition', inp, { expires: 1 });
-    setTaskDefinition(inp)
-  }
-
-  function updateCurrentAnswer(inp) {
-    Cookies.set('CurrentAnswer', inp, { expires: 1 });
-    setCurrentAnswer(inp)
-  }
-
-  function getTaskDefinition() {
-    let cook = Cookies.get("TaskDefinition")
-    if (typeof(cook)!="undefined") {
-      return cook
-    } else {
-      return ""
+            return (
+                <div className={card}>
+                    <div className="sec-info__left">
+                        <h3 className="sec-info__title-element">{writingResults.results.estimations[key].name}
+                        </h3>
+                        <p className="sec-info__nam-element">{GetBandScoreText(writingResults.results.level,writingResults.results.estimations[key].band,writingResults.results.estimations[key].stub)}</p>
+                    </div>
+                    <div className="sec-info__rignt">
+                        <p className="sec-info__text-element">{writingResults.results.estimations[key].comment}</p>
+                    </div>
+                    <div className="sec-info__element-error">{GetStubText(writingResults.results.level)}</div>
+                </div>
+            )
+        })
     }
-  }
+    function generateBlockRecomendation() {
+        return Object.keys(writingResults.results.recommendations).map((key, v) => {
+            let card = "sec-info__element " + getBlurColor(writingResults.results.recommendations[key].stub)
 
-  function getCurrentAnswer() {
-    let cook = Cookies.get("CurrentAnswer")
-    if (typeof(cook)!="undefined") {
-      return cook
-    } else {
-      return ""
+            return (
+                <div className={card}>
+                    <div className="sec-info__left">
+                        <h3 className="sec-info__title-element">{writingResults.results.recommendations[key].name}</h3>
+                    </div>
+                    <div className="sec-info__rignt">
+                        <p className="sec-info__text-element">{writingResults.results.recommendations[key].comment}</p>
+                    </div>
+                    <div className="sec-info__element-error">{GetStubText(writingResults.results.level)}</div>
+                </div>
+            )
+        })
     }
-  }
+    function getCurrentAnswer() {
+        let cook = Cookies.get("CurrentAnswer")
+        if (typeof (cook) != "undefined") {
+            return cook
+        } else {
+            return ""
+        }
+    }
+    const AnswerUpdate = e => {
+        const inp = e.target.value;
+        updateCurrentAnswer(inp)
+        console.log(inp)
+        if (inp == "") {
+            setWordCount("0")
+        } else {
+            const words = inp.split(" ").length
+            setWordCount(words.toString())
+        }
 
-  async function GetTask() {
-    const response = await fetch("/getRandomTopic", {
-      method: 'GET',
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-      }
-    });
-    const data = await response.json();
-    setTaskDefinition(data.topic);
-  };
+    }
+    const HandleChangeQuestion = e => {
+        const inp = e.target.value;
+        updateTaskDefinition(inp)
+
+    }
+    function updateTaskDefinition(inp) {
+        Cookies.set('TaskDefinition', inp);
+        setTaskDefinition(inp)
+    }
+    function updateCurrentAnswer(inp) {
+        Cookies.set('CurrentAnswer', inp);
+        setCurrentAnswer(inp)
+    }
+    function getTaskDefinition() {
+        let cook = Cookies.get("TaskDefinition")
+        if (typeof (cook) != "undefined") {
+            return cook
+        } else {
+            return ""
+        }
+    }
+    async function GetTask() {
+        const response = await fetch("/getRandomTopic", {
+            method: 'GET',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            }
+        });
+        const data = await response.json();
+        setTaskDefinition(data.topic);
+    };
+
+    async function EstimateAnswer() {
+        const response = await fetch("/WritingEstimation", {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                question: taskDefinition,
+                answer: currentAnswer,
+                user: GetUserName()
+            })
+        });
+        const data = await response.json();
+        let json = JSON.stringify(data);
+        Cookies.set('WritingEstimationResult', json);
+        setWritingResults(data)
+        setShowInProgress(false)
+        setShowResults(true)
+        
+    }
 
 
-  async function EstimateAnswer() {
-    const response = await fetch("/WritingEstimation", {
-      method: 'POST',
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        question: taskDefinition,
-        answer: currentAnswer,
-        user: GetUserName()
-      })
-    });
-    const data = await response.json();
-    let json = JSON.stringify(data);
-    updateResults(data)
-  }
+    return (
+        <>
+            <MobNav></MobNav>
+            <Header></Header>
+            <main className="main">
+                <section className="sec-test">
+                    <div className="container-test">
+                        <textarea className="sec-test__field sec-test__field-white"
+                            placeholder="Type Writing task here or generate a random question."
+                            value={taskDefinition}
+                            onChange={HandleChangeQuestion}
+                        >
 
+                        </textarea>
+                        <div className="sec-test__btn-row">
+                            <button className="sec-test__btn btnV1" onClick={e => GetTask()}>Random topic</button>
+                            <button className="sec-test__btn btnTest" onClick={startTimer}>{formatTime(time)}</button>
+                        </div>
+                        {/* <div className="sec-test__field sec-test__field-grey" disabled="disabled"> */}
+                        <textarea className="sec-test__field sec-test__field-grey"
+                            placeholder="type your answer here"
+                            value={currentAnswer}
+                            onChange={AnswerUpdate}
+                        >
 
+                        </textarea>
+                        {/* </div> */}
+                        <div className="sec-test__btn-row">
+                            <p className="sec-test__counter">Word count: {wordCount}</p>
+                        </div>
+                        <div className="sec-test__btn-row">
+                            <button className="btnV2 load-btn" onClick={async () => {
+                                setShowResults(false)
+                                setShowInProgress(true)
+                                await EstimateAnswer()
+                            }}>Estimate</button>
+                        </div>
 
+                    </div>
+                </section>
+                {showInProgress ? (
+                    <div className="loader-container">
+                    Analyse Writing results...
+                    <div className="loader"></div>
+                </div>
 
-  return (
-    <div>
-    <div className="writing-container">
-      <Helmet>
-        <title>Writing - OpenLang</title>
-        <meta property="og:title" content="Writing - OpenLang" />
-      </Helmet>
-      <div className="writing-menu-container menuecontainer">
-        <MenuComponent rootClassName="menu-component-root-class-name1"></MenuComponent>
-      </div>
-      <div className="writing-container01">
-        <div className="writing-container02">
-          <div className="writing-container03">
-            <button type="button" className="button" onClick={e => GetTask()}>
-              Generate
-            </button>
-          </div>
-          <div className="writing-container04">
-            <textarea
-              placeholder="Type Writing task here or generate a random question."
-              className="writing-textarea textarea"
-              value={taskDefinition}
-            onChange={HandleChangeQuestion}
+                ) : (<></>)}
+                {showResults ? (<>
+                    <section className="sec-info sec-info_active">
+                        <div className="container-info">
+                            <div className="title-row">
+                                <h1 className="main-title title-row__title">
+                                    Results
+                                </h1>
+                            </div>
+                            <div className="sec-info__elements-wrapper">
+                                {generateBlockResult()}
 
-            ></textarea>
-          </div>
-          <div className="writing-container05">
-            <button type="button" 
-            className="writing-button1 button" 
-            onClick={startTimer}
-            >
-              {formatTime(time)}
-            </button>
-          </div>
-        </div>
-        <div className="writing-container06">
-          <textarea
-            placeholder="Type your answer here."
-            className="writing-textarea1 textinput"
-            onChange={HandleChange}
-            value={currentAnswer}
-          ></textarea>
-        </div>
-        <div className="writing-container07">
-          <span>Word count: {title}</span>
-        </div>
-        <div className="writing-container08">
-          <button type="button" className="writing-button2 button" onClick={async () =>  {
-            await EstimateAnswer()
-            setShowResults(true)
-          }}>
-            Estimate
-          </button>
-        </div>
-      </div>
-      {showResults ? (
-        <div className="mycontainer">
-        <div
-          className={`estimation-container-container`}
-        >
-          <CardResult
-            rootClassName={getCardColor(taScore)}
-            className=""
-            score={taScore}
-            comment={taComment}
-            stub={taStub}
-            stubText={GetStubText(userLevel)}
-          ></CardResult>
-          <CardResult
-            header="Coherence &amp; Cohesion"
-            rootClassName={getCardColor(ccScore)}
-            className=""
-            score={ccScore}
-            comment={ccComment}
-            stub={ccStub}
-            stubText={GetStubText(userLevel)}
-          ></CardResult>
-          <CardResult
-            header="Lexical Resource"
-            rootClassName={getCardColor(lrScore)}
-            className=""
-            score={lrScore}
-            comment={lrComment}
-            stub={lrStub}
-            stubText={GetStubText(userLevel)}
-          ></CardResult>
-          <CardResult
-            header="Grammatical Range and Accuracy"
-            rootClassName={getCardColor(graScore)}
-            className=""
-            score={graScore}
-            comment={graComment}
-            stubText={GetStubText(userLevel)}
-            stub={graStub}
-          ></CardResult>
-        </div>
-        <div className="overall-container-container">
-                <h1 className="Heading">Overall:</h1>
-                <h1 className={GetOverallBlur(userLevel)}>{overall}</h1>
-            </div>
-        {/* <Overall userlevel={userLevel} overall={overall}></Overall> */}
-        <ImprovementsContainer userlevel={userLevel} improvements={selfimprovementsComment} errors={errorsComment}></ImprovementsContainer>
-      </div>
-      ): (<div/>)
-      }
-      
-    </div>
-    <Footer></Footer>
-    </div>
-  )
+                                <div className="sec-info__counter">
+                                <span>{GetOverallScoreText(writingResults.results.level, overall)}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section className="sec-info recommend-sec sec-info_active">
+                        <div className="container-info">
+                            <div className="title-row">
+                                <h1 className="main-title title-row__title">
+                                    Recommendations
+                                </h1>
+                            </div>
+                            <div className="sec-info__elements-wrapper">
+                                {generateBlockRecomendation()}
+                            </div>
+                        </div>
+                    </section>
+                </>) : (<></>)}
+            </main>
+            <Footer></Footer>
+        </>
+    )
 }
 
 export default Writing

@@ -1,14 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import Header from '../components/Header/Header';
-import Footer from '../components/Footer/Footer';
 
 const Privacy = () => {
     return (
-        <>
-        <Header></Header>
-        <main class="main">
-        <div class="container">
-        <div class="front-sec">
+        <div className='footer-content'>
             <h1>Privacy Policy for OpenLang</h1>
 
             <p>At OpenLang, accessible from https://openlang.one, one of our main priorities is the privacy of our visitors. This Privacy Policy document contains types of information that is collected and recorded by OpenLang and how we use it.</p>
@@ -55,11 +49,7 @@ const Privacy = () => {
             <h2>Consent</h2>
 
             <p>By using our website, you hereby consent to our Privacy Policy and agree to its Terms and Conditions.</p>
-            </div>
         </div>
-        </main>
-        <Footer></Footer>
-        </>
     )
 }
 

@@ -1,14 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import Header from '../components/Header/Header';
-import Footer from '../components/Footer/Footer';
 
 const DMCA = () => {
     return (
-        <>
-        <Header></Header>
-        <main class="main">
-        <div class="container">
-        <div class="front-sec">
+        <div className='footer-content'>
             <h1>DMCA policy</h1>
             <p>This Digital Millennium Copyright Act policy (&#8220;Policy&#8221;) applies to the <a href="https://openlang.one">openlang.one</a> website (&#8220;Website&#8221; or &#8220;Service&#8221;) and any of its related products and services (collectively, &#8220;Services&#8221;) and outlines how this Website operator (&#8220;Operator&#8221;, &#8220;we&#8221;, &#8220;us&#8221; or &#8220;our&#8221;) addresses copyright infringement notifications and how you (&#8220;you&#8221; or &#8220;your&#8221;) may submit a copyright infringement complaint.</p>
             <p>Protection of intellectual property is of utmost importance to us and we ask our users and their authorized agents to do the same. It is our policy to expeditiously respond to clear notifications of alleged copyright infringement that comply with the United States Digital Millennium Copyright Act (&#8220;DMCA&#8221;) of 1998, the text of which can be found at the U.S. Copyright Office <a href="https://www.copyright.gov" target="_blank" rel="nofollow noreferrer noopener external">website</a>. This DMCA policy was created with the help of <a href="https://www.websitepolicies.com/dmca-policy-generator" target="_blank">WebsitePolicies</a>.</p>
@@ -31,10 +25,6 @@ const DMCA = () => {
             <p>This document was last updated on July 6, 2023</p>
             <p class="madewith"><a href="https://www.websitepolicies.com/dmca-policy-generator?via=madewithbadge" target="_blank"><img width="200" height="25" alt="Made with WebsitePolicies DMCA policy generator" src="https://cdn.websitepolicies.io/img/badge.png" srcSet="https://cdn.websitepolicies.io/img/badge_2x.png 2x"></img></a></p>
         </div>
-        </div>
-        </main>
-        <Footer></Footer>
-        </>
     )
 }
 

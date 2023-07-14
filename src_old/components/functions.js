@@ -18,16 +18,6 @@ export function getCardColor(score) {
 
 }
 
-export function getBlurColor(stub) {
-    let res = ""
-    if (stub==true) {
-        res =  ""
-    } else if (stub==false) {
-        res =  "only-login-user"
-    }
-    return res
-}
-
 export function GetUserToken() {
     let profile = Cookies.get('userprofile')
     console.log(profile);
@@ -49,19 +39,6 @@ export function GetUserLevel() {
     }
 }
 
-export function GetEstimation(cookie_name) {
-    let res = Cookies.get(cookie_name)
-    if (typeof(res) == "undefined") {
-        return "undefined"
-    } else {
-        let tmp = JSON.parse(res)
-        console.log(tmp)
-        return tmp
-    }
-}
-
-
-
 export function GetUserName() {
     let profile = Cookies.get('userprofile')
     console.log(profile);
@@ -74,31 +51,12 @@ export function GetUserName() {
 }
 
 export function GetStubText(userlevel) {
+    console.log("userlevel = "+userlevel)
     if (userlevel == 0) {
         return "Please LogIn to see results"
-    } else {
+    } else if (userlevel == 1) {
         return "Not avaliable in your plan"
     }
-}
-
-export function GetOverallScoreText(userlevel, overall) {
-    console.log(userlevel)
-    if (userlevel < 2) {
-        return ""
-    } else {
-        return "Overall: "+ overall
-    }
-}
-
-export function GetBandScoreText(userlevel, badnscore, stub) {
-    console.log(userlevel)
-    if (userlevel == 0) {
-        return ""
-    } else if (userlevel == 1 && stub == true) {
-        return ""
-    } else {
-        return badnscore
-    } 
 }
 
 export function scrollElement(inpname){
