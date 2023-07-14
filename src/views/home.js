@@ -5,6 +5,7 @@ import WritingSection from '../components/writing_section'
 import SpeakingSection from '../components/speaking_section'
 import Prices from '../components/prices'
 import Footer from '../components/footer'
+import MobNav from '../components/mob_nav'
 
 const Home = (props) => {
     const ref = useRef(null);
