@@ -1,11 +1,11 @@
 import React, { useState, useEffect, useRef } from 'react'
-import MobNav from '../components/mob_nav/mob_nav'
-import Header from '../components/header/header'
-import IntroSection from '../components/intro_section/intro_section'
-import WritingSection from '../components/writing_section/writing_section'
-import SpeakingSection from '../components/speaking_section/speaking_section'
-import Prices from '../components/prices/prices'
-import Footer from '../components/footer/footer'
+import MobNav from '../components/mob_nav'
+import Header from '../components/header'
+import IntroSection from '../components/intro_section'
+import WritingSection from '../components/writing_section'
+import SpeakingSection from '../components/speaking_section'
+import Prices from '../components/prices'
+import Footer from '../components/footer'
 
 const Contacts = (props) => {
     const ref = useRef(null);

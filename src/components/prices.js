@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react'
 
-import { GetUserName } from '../functions';
+import { GetUserName } from './functions';
 
 const Prices = React.forwardRef((props, ref) => {
 	function handleClick() {

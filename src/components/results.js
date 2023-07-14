@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react'
 import PropTypes from 'prop-types'
-import { getCardColor, getBlurColor } from '../functions';
+import { getCardColor, getBlurColor } from './functions';
 
 const Results = (props) => {
 

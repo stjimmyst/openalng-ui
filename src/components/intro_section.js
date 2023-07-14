@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react'
 
-import { scrollElement } from '../functions'
+import { scrollElement } from './functions'
 
 const IntroSection = (props) => {
 return (

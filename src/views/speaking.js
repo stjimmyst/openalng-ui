@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react'
-import MobNav from '../components/mob_nav/mob_nav'
-import Header from '../components/header/header'
+import MobNav from '../components/mob_nav'
+import Header from '../components/header'
 
-import Footer from '../components/footer/footer'
+import Footer from '../components/footer'
 import Cookies from 'js-cookie';
 import { AudioRecorder, useAudioRecorder } from 'react-audio-voice-recorder';
 
