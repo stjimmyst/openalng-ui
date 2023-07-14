@@ -6,7 +6,7 @@ import Footer from '../components/footer'
 import Cookies from 'js-cookie';
 import { AudioRecorder, useAudioRecorder } from 'react-audio-voice-recorder';
 
-import { GetEstimation, GetUserName, getCardColor, getBlurColor, GetStubText, GetOverallScoreText, GetBandScoreText } from '../components/functions'
+import { GetEstimation, GetUserName, getCardColor, getBlurColor, GetStubText, GetOverallScoreText, GetBandScoreText, StringToMarkup} from '../components/functions'
 
 const Speaking = (props) => {
     const [speakingResults, setSpeakingResults] = useState(GetEstimation("SpeakingEstimationResult"))
@@ -117,7 +117,7 @@ const Speaking = (props) => {
                         <p className="sec-info__nam-element">{GetBandScoreText(speakingResults.results.level, speakingResults.results.estimations[key].band, speakingResults.results.estimations[key].stub)}</p>
                     </div>
                     <div className="sec-info__rignt">
-                        <p className="sec-info__text-element">{speakingResults.results.estimations[key].comment}</p>
+                        <p className="sec-info__text-element">{StringToMarkup(speakingResults.results.estimations[key].comment)}</p>
                     </div>
                     <div className="sec-info__element-error">{GetStubText(speakingResults.results.level)}</div>
                 </div>
@@ -134,7 +134,7 @@ const Speaking = (props) => {
                         <h3 className="sec-info__title-element">{speakingResults.results.recommendations[key].name}</h3>
                     </div>
                     <div className="sec-info__rignt">
-                        <p className="sec-info__text-element">{speakingResults.results.recommendations[key].comment}</p>
+                        <p className="sec-info__text-element">{StringToMarkup(speakingResults.results.recommendations[key].comment)}</p>
                     </div>
                     <div className="sec-info__element-error">{GetStubText(speakingResults.results.level)}</div>
                 </div>

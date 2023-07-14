@@ -4,7 +4,7 @@ import Header from '../components/header'
 
 import Footer from '../components/footer'
 import Cookies from 'js-cookie';
-import { GetEstimation, GetUserName, getCardColor, getBlurColor, GetStubText,GetOverallScoreText,GetBandScoreText } from '../components/functions'
+import { GetEstimation, GetUserName, getCardColor, getBlurColor, GetStubText,GetOverallScoreText,GetBandScoreText,StringToMarkup } from '../components/functions'
 
 const Writing = (props) => {
     const [writingResults, setWritingResults] = useState(GetEstimation('WritingEstimationResult'))
@@ -93,7 +93,7 @@ const Writing = (props) => {
                         <p className="sec-info__nam-element">{GetBandScoreText(writingResults.results.level,writingResults.results.estimations[key].band,writingResults.results.estimations[key].stub)}</p>
                     </div>
                     <div className="sec-info__rignt">
-                        <p className="sec-info__text-element">{writingResults.results.estimations[key].comment}</p>
+                        <p className="sec-info__text-element">{StringToMarkup(writingResults.results.estimations[key].comment)}</p>
                     </div>
                     <div className="sec-info__element-error">{GetStubText(writingResults.results.level)}</div>
                 </div>
@@ -110,7 +110,11 @@ const Writing = (props) => {
                         <h3 className="sec-info__title-element">{writingResults.results.recommendations[key].name}</h3>
                     </div>
                     <div className="sec-info__rignt">
-                        <p className="sec-info__text-element">{writingResults.results.recommendations[key].comment}</p>
+                    {/* <textarea className="text-area-result"
+                            value={writingResults.results.recommendations[key].comment}>
+                        </textarea> */}
+
+                        <p className="sec-info__text-element">{StringToMarkup(writingResults.results.recommendations[key].comment)}</p>
                     </div>
                     <div className="sec-info__element-error">{GetStubText(writingResults.results.level)}</div>
                 </div>

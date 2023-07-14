@@ -90,6 +90,14 @@ export function GetOverallScoreText(userlevel, overall) {
     }
 }
 
+export function StringToMarkup(inp) {
+    let tmp = inp.split("\n")
+    console.log(tmp)
+    return tmp.map(element => {
+        return (<p className="sec-info__text-element">{element}<br/></p>)
+    });
+}
+
 export function GetBandScoreText(userlevel, badnscore, stub) {
     console.log(userlevel)
     if (userlevel == 0) {
