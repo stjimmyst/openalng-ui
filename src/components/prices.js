@@ -41,7 +41,7 @@ const Prices = React.forwardRef((props, ref) => {
 					<div className="prices__row">
 						<div className="prices__element">
 							<div className="prices__elemen__top">
-								<h3 className="prices__title">Begginer</h3>
+								<h3 className="prices__title">Beginner</h3>
 								<div className="prices__cost-row">
 									<span className="prices__cost">0$</span>
 									<span className="prices__date">Monthly</span>
