@@ -6,7 +6,7 @@ import Footer from '../components/footer'
 import Cookies from 'js-cookie';
 import { AudioRecorder, useAudioRecorder } from 'react-audio-voice-recorder';
 
-import { GetEstimation, GetUserName, getCardColor, getBlurColor, GetStubText, GetOverallScoreText, GetBandScoreText, StringToMarkup} from '../components/functions'
+import { GetEstimation, GetUserName, getCardColor, getBlurColor, GetStubText, GetOverallScoreText, GetBandScoreText, StringToMarkup, DefaultSpeaking} from '../components/functions'
 
 const Speaking = (props) => {
     const [speakingResults, setSpeakingResults] = useState(GetEstimation("SpeakingEstimationResult"))
@@ -22,7 +22,7 @@ const Speaking = (props) => {
 
     function checkShowResults() {
         if (speakingResults == "undefined") {
-            return false
+            return true
         } else {
             updateTaskDefinition(speakingResults.question)
             return true
@@ -157,7 +157,7 @@ const Speaking = (props) => {
         if (typeof (cook) != "undefined") {
             return cook
         } else {
-            return ""
+            return DefaultSpeaking.results.question
         }
     }
     async function GetTask() {
@@ -270,7 +270,7 @@ const Speaking = (props) => {
                 {showResults ? (<>
                     <section className="sec-info sec-info_active">
                         <div className="container-info">
-                            <div className="title-row">
+                            {speakingResults.results.transcription != "" ? (<><div className="title-row">
                                 <h1 className="main-title title-row__title">
                                     Transcription
                                 </h1>
@@ -279,7 +279,8 @@ const Speaking = (props) => {
                                 <div className="sec-test__field sec-test__field-grey-transcription" disabled="disabled">
                                     {speakingResults.transcription}
                                 </div>
-                            </div>
+                            </div></>): (<></>)}
+                            
 
                             <div className="title-row">
                                 <h1 className="main-title title-row__title">

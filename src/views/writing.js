@@ -4,7 +4,7 @@ import Header from '../components/header'
 
 import Footer from '../components/footer'
 import Cookies from 'js-cookie';
-import { GetEstimation, GetUserName, getCardColor, getBlurColor, GetStubText,GetOverallScoreText,GetBandScoreText,StringToMarkup } from '../components/functions'
+import { GetEstimation, GetUserName, getCardColor, getBlurColor, GetStubText,GetOverallScoreText,GetBandScoreText,StringToMarkup,DefaultWriting } from '../components/functions'
 
 const Writing = (props) => {
     const [writingResults, setWritingResults] = useState(GetEstimation('WritingEstimationResult'))
@@ -19,8 +19,9 @@ const Writing = (props) => {
 
     function checkShowResults() {
         if (writingResults == "undefined") {
-            return false
-        } else {
+            return true
+        }
+        else {
             return true
         }
     }
@@ -37,6 +38,9 @@ const Writing = (props) => {
         setOverall(calculateOverall)
 
     }, [showResults]);
+    useEffect( () => {
+        WordCountCalculate()
+    }, [currentAnswer])
     useEffect(() => {
         let timerId;
     
@@ -126,20 +130,20 @@ const Writing = (props) => {
         if (typeof (cook) != "undefined") {
             return cook
         } else {
-            return ""
+            return DefaultWriting.results.answer
         }
     }
     const AnswerUpdate = e => {
         const inp = e.target.value;
         updateCurrentAnswer(inp)
-        console.log(inp)
-        if (inp == "") {
+    }
+    function WordCountCalculate() {
+        if (currentAnswer == "") {
             setWordCount("0")
         } else {
-            const words = inp.split(" ").length
+            const words = currentAnswer.split(" ").length
             setWordCount(words.toString())
         }
-
     }
     const HandleChangeQuestion = e => {
         const inp = e.target.value;
@@ -159,7 +163,7 @@ const Writing = (props) => {
         if (typeof (cook) != "undefined") {
             return cook
         } else {
-            return ""
+            return DefaultWriting.results.question
         }
     }
     async function GetTask() {
