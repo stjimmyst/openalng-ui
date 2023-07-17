@@ -44,6 +44,8 @@ const Prices = React.forwardRef((props, ref) => {
 								<h3 className="prices__title">Beginner</h3>
 								<div className="prices__cost-row">
 									<span className="prices__cost">0$</span>
+								</div>
+								<div className="prices__cost-row">
 									<span className="prices__date">Monthly</span>
 								</div>
 								<ul className="prices__list-services">
@@ -85,7 +87,7 @@ const Prices = React.forwardRef((props, ref) => {
 
 						</div>
 
-						<div className="prices__element">
+						{/* <div className="prices__element">
 							<div className="prices__elemen__top">
 								<h3 className="prices__title">Intermediate</h3>
 								<div className="prices__cost-row">
@@ -124,19 +126,22 @@ const Prices = React.forwardRef((props, ref) => {
 								</ul>
 							</div>
 							<div className="prices__btn-row">
-								{/* <a href="" className="prices__btn">Buy</a> */}
 								{getButton("Buy",process.env.REACT_APP_INTERMEDIATE_PLAN,"_blank","")}
 							</div>
 
-						</div>
+						</div> */}
 
 
 						<div className="prices__element">
 							<div className="prices__elemen__top">
 								<h3 className="prices__title">Advanced</h3>
 								<div className="prices__cost-row">
-									<span className="prices__cost">24.99$</span>
+								<span className="prices__cost">14.99$</span>
+									<span className="prices__cost_old">24.99$</span>
+								</div>
+								<div className="prices__cost-row">
 									<span className="prices__date">Monthly</span>
+									<span className="prices__date">2 days free</span>
 								</div>
 								<ul className="prices__list-services">
 									<li className="prices__list-element">
@@ -171,7 +176,7 @@ const Prices = React.forwardRef((props, ref) => {
 							</div>
 							<div className="prices__btn-row">
 								{/* <a href="" className="prices__btn">Buy</a> */}
-								{getButton("Buy",process.env.REACT_APP_ADVANCED_PLAN,"_blank","")}
+								{getButton("Try",process.env.REACT_APP_ADVANCED_PLAN,"_blank","")}
 							</div>
 
 						</div>
