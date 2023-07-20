@@ -5,8 +5,13 @@ import { GoogleOAuthProvider } from '@react-oauth/google';
 
 import './style.css'
 import Home from './views/home'
-import Writing from './views/writing';
-import Speaking from './views/speaking';
+import WritingGeneral from './views/writing_general';
+import SpeakingGeneral from './views/speaking-general';
+import IeltsWriting from './views/ielts-writing';
+import IeltsSpeaking from './views/ielts-speaking';
+import CelpipWriting from './views/celpip-writing';
+import CelpipSpeaking from './views/celpip-speaking';
+
 import Contacts from './views/contacts';
 import DMCA from './views/dmca';
 import Privacy from './views/privacy';
@@ -19,8 +24,12 @@ const App = () => {
     <Router>
       <div>
         <Route component={Home} exact path="/" />
-        <Route component={Writing} exact path="/writing" />
-        <Route component={Speaking} exact path="/speaking" />
+        <Route component={WritingGeneral} exact path="/writing" />
+        <Route component={SpeakingGeneral} exact path="/speaking" />
+        <Route component={IeltsWriting} exact path="/writing_ielts" />
+        <Route component={IeltsSpeaking} exact path="/speaking_ielts" />
+        <Route component={CelpipWriting} exact path="/writing_celpip" />
+        <Route component={CelpipSpeaking} exact path="/speaking_celpip" />
         <Route component={Contacts} exact path="/contacts" />
         <Route component={Privacy} exact path="/privacy"/>
         <Route component={Terms} exact path="/terms"/>

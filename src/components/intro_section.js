@@ -17,6 +17,10 @@ return (
 							<img src="img/_src/ielts-logo.png" alt="" className="how-it-work__icon"/>
 							{/* <h3 className="how-it-work__title">Get Writing topic</h3> */}
 						</div>
+						<div className="how-it-work__element">
+							<img src="img/_src/celpip-logo.png" alt="" className="how-it-work__icon"/>
+							{/* <h3 className="how-it-work__title">Get Writing topic</h3> */}
+						</div>
 						{/* <div className="how-it-work__element">
 							<img src="img/_src/h2.png" alt="" className="how-it-work__icon"/>
 							<h3 className="how-it-work__title">Type your essay

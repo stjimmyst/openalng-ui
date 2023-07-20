@@ -6,10 +6,10 @@ import Footer from '../components/footer'
 import Cookies from 'js-cookie';
 import { AudioRecorder, useAudioRecorder } from 'react-audio-voice-recorder';
 
-import { GetEstimation, GetUserName, getCardColor, getBlurColor, GetStubText, GetOverallScoreText, GetBandScoreText, StringToMarkup, DefaultSpeaking} from '../components/functions'
+import { GetEstimation, GetUserName, getCardColor, getBlurColor, GetStubText, GetOverallScoreText, GetBandScoreText, StringToMarkup, DefaultIeltsSpeaking} from '../components/functions'
 
-const Speaking = (props) => {
-    const [speakingResults, setSpeakingResults] = useState(GetEstimation("SpeakingEstimationResult"))
+const IeltsSpeaking = (props) => {
+    const [speakingResults, setSpeakingResults] = useState(GetEstimation("SpeakingIeltsEstimationResult"))
     const [showResults, setShowResults] = useState(false)
     const [showInProgress, setShowInProgress] = useState(false)
     const [showEstimateBuitton, setShowEstimateButon] = useState(false)
@@ -148,25 +148,29 @@ const Speaking = (props) => {
 
     }
     function updateTaskDefinition(inp) {
-        Cookies.set('SpeakingTaskDefinition', inp);
+        Cookies.set('SpeakingIeltsTaskDefinition', inp);
         setTaskDefinition(inp)
     }
 
     function getTaskDefinition() {
-        let cook = Cookies.get("SpeakingTaskDefinition")
+        let cook = Cookies.get("SpeakingIeltsTaskDefinition")
         if (typeof (cook) != "undefined") {
             return cook
         } else {
-            return DefaultSpeaking.results.question
+            return DefaultIeltsSpeaking.results.question
         }
     }
     async function GetTask() {
-        const response = await fetch("/getRandomSpeakingTopic", {
+        const response = await fetch("/getRandomTopic?"+new URLSearchParams({
+            task_type: "speaking",
+            test_type: "ielts"
+        }), {
             method: 'GET',
             headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json'
-            }
+            },
+            
         });
         const data = await response.json();
         setTaskDefinition(data.topic);
@@ -183,7 +187,8 @@ const Speaking = (props) => {
 
         const obj = {
             question: taskDefinition,
-            user: GetUserName()
+            user: GetUserName(),
+            test: "ielts"
         };
         const json = JSON.stringify(obj);
         const blob = new Blob([json], {
@@ -203,7 +208,7 @@ const Speaking = (props) => {
         });
         const data = await response.json();
         let res = JSON.stringify(data);
-        Cookies.set('SpeakingEstimationResult', res);
+        Cookies.set('SpeakingIeltsEstimationResult', res);
         setSpeakingResults(data)
         setShowResults(true)
         setShowInProgress(false)
@@ -317,4 +322,4 @@ const Speaking = (props) => {
     )
 }
 
-export default Speaking
+export default IeltsSpeaking

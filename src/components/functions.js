@@ -3,7 +3,7 @@ import Cookies from 'js-cookie';
 import { googleLogout, useGoogleLogin } from '@react-oauth/google';
 import axios from 'axios';
 
-export const DefaultSpeaking = {
+export const DefaultIeltsSpeaking = {
     question: "This is example IELTS Speaking Task 2.\n\nDescribe a successful businessman/businesswoman that you know. You should say:\n- Who he/she is and how you know her/him;\n- What her/his business is;\n- How you think this persons's business will do in the future;\n- Why do you think he/she is successful.",
     results: {
         level: 2,
@@ -54,10 +54,10 @@ export const DefaultSpeaking = {
     }
     }
 }
-export const DefaultWriting = {
+export const DefaultIeltsWriting = {
     results: {
         level: 3,
-    question: "This is example IELTS Writing 1 question.\nYou are working for a company. You need to take some time off work and want to ask your manager about this. Write a letter to your manager. In your letter:\n• Explain why you want to take time off\n• Give details of the amount of time you need\n• Suggest how your work could be covered while you are away.\nWrite at least 150 words",
+    question: "This is example IELTS Writing 1 question.\n\nYou are working for a company. You need to take some time off work and want to ask your manager about this. Write a letter to your manager. In your letter:\n• Explain why you want to take time off\n• Give details of the amount of time you need\n• Suggest how your work could be covered while you are away.\nWrite at least 150 words",
     answer: "Dear Ms. Anderson,\n\nHope you are find well. I am writing to request some time off work due to a personal matter that require my attention. I apologies for any inconvenience this may cause.\nThe reason I need time off is because my sister, Lisa, is getting married next month and I want to be present for the wedding. It is an important family event and I would like to celebrate this special occasion with my sister and our entire family. I believe it is a once-in-a-lifetime moment that I shouldn't miss.\n\nI would require a total of five days off from work, starting from the day before the wedding until two days after. This will allow me enough time to travel to the location, attend the wedding and festivities, and then return home.\nDuring my absence, I suggest that my tasks could be assigned to my colleague, John. He has a good understanding of my responsibilities and has shown great competence in handling similar tasks in the past. I will be happy to provide him with any necessary guidance or support before I leave.\n\nThank you for considering my request. I believe that taking this time off will not only allow me to be there for my family but also recharge and return to work with renewed energy and focus.\n\nYours sincerely,\nDavid Thompson",
     recommendations: {
         errors: {
@@ -101,6 +101,113 @@ export const DefaultWriting = {
             band: 7,
             stub: false,
             comment: "This is example response.\n\nThe response addresses all the points of the task and provides relevant details. The writer explains the reason for taking time off and gives specific information about the duration needed. Additionally, the writer suggests a solution for covering their work while they are away. The letter is organized and coherent, with clear paragraphs and appropriate language used throughout. The writer could have provided more concise and precise details about the personal matter that requires their attention. Additionally, some grammatical errors and awkward phrasing could be improved. Overall, the response demonstrates a good level of task achievement, with relevant details provided and the main points addressed effectively."
+        },
+
+    }
+}
+}
+
+export const DefaultCelpipSpeaking = {
+    question: "This is example CELPIP Speaking Task 1 question.\n\nYour friend has just graduated with a business degree and has been offered a job overseas. Although the job would be an excellent opportunity, she is not sure about moving so far away from her friends and family. Give her advice on what she should consider when making her decision.",
+    
+    results: {
+        level: 3,
+    transcription: "",
+    recommendations: {
+        errors: {
+            stub: false,
+            name: "Errors and Grammatics",
+            comment: "This is example response.\n\nHere are the errors I found in the text:\n\n1. \"I would like to put forth my request request to keep the library open every day of a week\" - The word \"request\" is repeated twice.\nCorrection: I would like to put forth my request to keep the library open every day of the week.\n\n2. \"These are the days which are most comfortable and convenient us to visit and more time in library reading.\" - The word \"and\" is used twice in this sentence.\nCorrection: These are the days which are most comfortable and convenient for us to spend more time reading in the library.\n\n3. \"But unfortunately, the public library is not open on Sundays and Mondays which keeps most of the public away from library especially on Sunday and for people like me on Monday too.\" - The word \"away from library\" should be \"away from the library\" and \"for people like me on Monday too\" should be \"for people like me as well on Mondays.\"\nCorrection: But unfortunately, the public library is not open on Sundays and Mondays, which keeps most of the public away from the library, especially on Sundays, and for people like me as well on Mondays.\n\n4. \"As said, library being the source of information for most of the public should be accessible to public every day to ensure we cover interests of interested people\" - The phrase \"interests of interested people\" is awkward and redundant.\nCorrection: As previously mentioned, the library, being the source of"
+
+        },
+        self: {
+            name: "Grammar rules",
+            stub: true,
+            comment: "This is example response.\n\nList of grammar rules related to the provided text:\n\n1. Correct usage of articles: In the line \"Library is the best source of information and knowledge,\" the definite article \"the\" is used correctly before \"library\" as it refers to a specific library.\n2. Subject-verb agreement: In the line \"I visit library 4 to 5 times a week,\" the subject \"I\" matches the verb \"visit\" in terms of number agreement.\n3. Prepositions: In the line \"I visit library 4 to 5 times a week,\" the use of the preposition \"to\" is incorrect. It should be \"I visit the library 4 to 5 times a week.\"\n4. Capitalization: In the line \"I would like to put forth my request request,\" the word \"request\" is repeated twice unnecessarily, and the initial capitalization of \"request\" is incorrect. It should be \"I would like to put forth my request to keep the library open every day of the week.\"\n5. Sentence structure: In the line \"For instance, my work shifts enables me to take Sunday/Monday offs,\" the verb \"enables\" does not agree with the subject \"work shifts.\" It should be \"For instance, my work shifts enable me to take Sunday/Monday offs.\""
+        },
+        grammar: {
+            name: "Improvements",
+            stub: true,
+            comment: "This is example response.\n\nDear Sir,\n\nThe library serves as a valuable resource for obtaining information and knowledge, as it is easily accessible to the general public. I frequently visit the library, dedicating a minimum of two hours to each visit, typically averaging four to five visits per week. With this in mind, I would like to express my sincere request to have the library open on all seven days of the week, as it would be in the best interest of the public.\n\nConsidering the various work environments and schedules that people have, it is crucial to accommodate their needs. For example, my work schedule allows me to have Sundays and Mondays off, while my wife's schedule grants her Saturdays and Sundays off. These particular days are when we find it most comfortable and convenient to spend additional time in the library reading. Unfortunately, the public library is currently closed on Sundays and Mondays, which discourages many individuals, including myself, from visiting on these days.\n\nGiven that the library serves as a primary source of information for the majority of the public, it is essential that it remains accessible every day to accommodate the interests and preferences of its patrons.\n\nThank you for your consideration.\n\nSincerely,\nXYZ"
+        }
+    },
+    estimations: {
+        cc: {
+            name: "Vocabulary",
+            band: 7,
+            stub: false,
+            comment: "This is example response.\n\nThe candidate provides a clear and coherent response, expressing a request to keep the library open every day of the week. Vocabulary usage is generally accurate and appropriate, with a range of vocabulary displayed. However, there are a few minor errors and some repetition of vocabulary. The candidate effectively uses phrases and expressions to support their arguments, such as 'in public interest' and 'source of information'. The response could benefit from more varied and sophisticated vocabulary to enhance the overall quality of writing. Additionally, the candidate could expand on their ideas and provide more specific examples to further support their request. The response meets the minimum word requirement and is well-organized, with clear introduction and conclusion. Overall, the response demonstrates adequate vocabulary usage, but could benefit from more variety and development."
+        },
+        gra: {
+            name: "Listenability",
+            band: 8,
+            stub: false,
+            comment: "This is example response.\n\nThe response demonstrates a clear purpose and organization. The writer effectively presents their request for the library to be open every day of the week. The introduction provides a clear context for the request, explaining that the library is an important source of information and knowledge. The writer uses specific examples to support their argument, stating that they visit the library multiple times a week and highlighting the different schedules of individuals. The conclusion succinctly restates the request and reiterates the importance of accessibility. The response is coherent and cohesive, with appropriate use of linking words and phrases. The vocabulary and grammar are mostly accurate, with only minor errors. Overall, the response effectively communicates the writer's viewpoint and is easily readable."
+        },
+        lr: {
+            name: "Task Fulfillment",
+            band: 6,
+            stub: false,
+            comment: "This is example response.\n\nThe response provides a clear request to keep the library open every day of the week in the interest of the public. The writer explains their own visit frequency and the specific days which are convenient for them and their spouse. However, the response could have been better organized and could have included more specific reasons to support the request. Additionally, there are a few grammatical errors and the vocabulary could be more varied. Overall, the response demonstrates task fulfillment as it clearly states the request and provides some supporting details, but could have been more developed."
+        },
+        ta: {
+            name: "Content/Coherence",
+            band: 7,
+            stub: false,
+            comment: "This is example response.\n\nThe response adequately addresses the task and provides a clear structure. The writer describes the importance of the library and explains why the current opening hours don't work for them. The suggestion for opening the library every day is also mentioned. However, the response could have been more detailed by providing specific examples or anecdotes to support the points made. The language used is appropriate and the writer effectively communicates their request and concerns. There are minimal errors in grammar, punctuation, and spelling. Overall, the response effectively conveys the message, but could benefit from further development to provide more depth and support to the arguments made."
+        },
+
+    }
+}
+}
+
+export const DefaultCelpipWriting = {
+    results: {
+        level: 3,
+    question: "This is example CELPIP Writing Task 1 question.\n\nYou use the local public library several times every week. However, the library is closed on Sundays and Mondays. You think the library should be open every day.\nWrite an email to the chief librarian in about 150–200 words. Your email should do the following things:\n\n• Describe the importance of the library for you.\n• Explain why the opening hours don’t work for you.\n• Suggest how people could use the library if it were open every day.",
+    answer: "Respected Sir,\n\nLibrary is the best source of information and knowledge, easily accessible to public. I visit library 4 to 5 times a week spending a minimum of 2 hours on each visit. I would like to put forth my request request to keep the library open every day of a week, in public interest.\n\nPeople work in different environments with different schedule. For instance, my work shifts enables me to take Sunday/Monday offs whereas, my wife gets Saturday/Sunday offs. These are the days which are most comfortable and convenient us to visit and more time in library reading. But unfortunately, the public library is not open on Sundays and Mondays which keeps most of the public away from library especially on Sunday and for people like me on Monday too.\n\nAs said, library being the source of information for most of the public should be accessible to public every day to ensure we cover interests of interested people\n\nThanks,\nXYZ",
+    recommendations: {
+        errors: {
+            stub: false,
+            name: "Errors and Grammatics",
+            comment: "This is example response.\n\nHere are the errors I found in the text:\n\n1. \"I would like to put forth my request request to keep the library open every day of a week\" - The word \"request\" is repeated twice.\nCorrection: I would like to put forth my request to keep the library open every day of the week.\n\n2. \"These are the days which are most comfortable and convenient us to visit and more time in library reading.\" - The word \"and\" is used twice in this sentence.\nCorrection: These are the days which are most comfortable and convenient for us to spend more time reading in the library.\n\n3. \"But unfortunately, the public library is not open on Sundays and Mondays which keeps most of the public away from library especially on Sunday and for people like me on Monday too.\" - The word \"away from library\" should be \"away from the library\" and \"for people like me on Monday too\" should be \"for people like me as well on Mondays.\"\nCorrection: But unfortunately, the public library is not open on Sundays and Mondays, which keeps most of the public away from the library, especially on Sundays, and for people like me as well on Mondays.\n\n4. \"As said, library being the source of information for most of the public should be accessible to public every day to ensure we cover interests of interested people\" - The phrase \"interests of interested people\" is awkward and redundant.\nCorrection: As previously mentioned, the library, being the source of"
+
+        },
+        self: {
+            name: "Grammar rules",
+            stub: false,
+            comment: "This is example response.\n\nList of grammar rules related to the provided text:\n\n1. Correct usage of articles: In the line \"Library is the best source of information and knowledge,\" the definite article \"the\" is used correctly before \"library\" as it refers to a specific library.\n2. Subject-verb agreement: In the line \"I visit library 4 to 5 times a week,\" the subject \"I\" matches the verb \"visit\" in terms of number agreement.\n3. Prepositions: In the line \"I visit library 4 to 5 times a week,\" the use of the preposition \"to\" is incorrect. It should be \"I visit the library 4 to 5 times a week.\"\n4. Capitalization: In the line \"I would like to put forth my request request,\" the word \"request\" is repeated twice unnecessarily, and the initial capitalization of \"request\" is incorrect. It should be \"I would like to put forth my request to keep the library open every day of the week.\"\n5. Sentence structure: In the line \"For instance, my work shifts enables me to take Sunday/Monday offs,\" the verb \"enables\" does not agree with the subject \"work shifts.\" It should be \"For instance, my work shifts enable me to take Sunday/Monday offs.\""
+        },
+        grammar: {
+            name: "Improvements",
+            stub: false,
+            comment: "This is example response.\n\nDear Sir,\n\nThe library serves as a valuable resource for obtaining information and knowledge, as it is easily accessible to the general public. I frequently visit the library, dedicating a minimum of two hours to each visit, typically averaging four to five visits per week. With this in mind, I would like to express my sincere request to have the library open on all seven days of the week, as it would be in the best interest of the public.\n\nConsidering the various work environments and schedules that people have, it is crucial to accommodate their needs. For example, my work schedule allows me to have Sundays and Mondays off, while my wife's schedule grants her Saturdays and Sundays off. These particular days are when we find it most comfortable and convenient to spend additional time in the library reading. Unfortunately, the public library is currently closed on Sundays and Mondays, which discourages many individuals, including myself, from visiting on these days.\n\nGiven that the library serves as a primary source of information for the majority of the public, it is essential that it remains accessible every day to accommodate the interests and preferences of its patrons.\n\nThank you for your consideration.\n\nSincerely,\nXYZ"
+        }
+    },
+    estimations: {
+        cc: {
+            name: "Vocabulary",
+            band: 7,
+            stub: false,
+            comment: "The candidate provides a clear and coherent response, expressing a request to keep the library open every day of the week. Vocabulary usage is generally accurate and appropriate, with a range of vocabulary displayed. However, there are a few minor errors and some repetition of vocabulary. The candidate effectively uses phrases and expressions to support their arguments, such as 'in public interest' and 'source of information'. The response could benefit from more varied and sophisticated vocabulary to enhance the overall quality of writing. Additionally, the candidate could expand on their ideas and provide more specific examples to further support their request. The response meets the minimum word requirement and is well-organized, with clear introduction and conclusion. Overall, the response demonstrates adequate vocabulary usage, but could benefit from more variety and development."
+        },
+        gra: {
+            name: "Readability",
+            band: 8,
+            stub: false,
+            comment: "The response demonstrates a clear purpose and organization. The writer effectively presents their request for the library to be open every day of the week. The introduction provides a clear context for the request, explaining that the library is an important source of information and knowledge. The writer uses specific examples to support their argument, stating that they visit the library multiple times a week and highlighting the different schedules of individuals. The conclusion succinctly restates the request and reiterates the importance of accessibility. The response is coherent and cohesive, with appropriate use of linking words and phrases. The vocabulary and grammar are mostly accurate, with only minor errors. Overall, the response effectively communicates the writer's viewpoint and is easily readable."
+        },
+        lr: {
+            name: "Task Fulfillment",
+            band: 6,
+            stub: false,
+            comment: "The response provides a clear request to keep the library open every day of the week in the interest of the public. The writer explains their own visit frequency and the specific days which are convenient for them and their spouse. However, the response could have been better organized and could have included more specific reasons to support the request. Additionally, there are a few grammatical errors and the vocabulary could be more varied. Overall, the response demonstrates task fulfillment as it clearly states the request and provides some supporting details, but could have been more developed."
+        },
+        ta: {
+            name: "Content/Coherence",
+            band: 7,
+            stub: false,
+            comment: "The response adequately addresses the task and provides a clear structure. The writer describes the importance of the library and explains why the current opening hours don't work for them. The suggestion for opening the library every day is also mentioned. However, the response could have been more detailed by providing specific examples or anecdotes to support the points made. The language used is appropriate and the writer effectively communicates their request and concerns. There are minimal errors in grammar, punctuation, and spelling. Overall, the response effectively conveys the message, but could benefit from further development to provide more depth and support to the arguments made."
         },
 
     }
@@ -157,10 +264,14 @@ export function GetEstimation(cookie_name) {
     let res = Cookies.get(cookie_name)
     if (typeof(res) == "undefined") {
         // return "undefined"
-        if (cookie_name=="WritingEstimationResult") {
-            return DefaultWriting
-        } else {
-            return DefaultSpeaking
+        if (cookie_name=="WritingIeltsEstimationResult") {
+            return DefaultIeltsWriting
+        } else if (cookie_name=="SpeakingIeltsEstimationResult") {
+            return DefaultIeltsSpeaking
+        } else if (cookie_name=="WritingCelpipEstimationResult") {
+            return DefaultCelpipWriting
+        } else if (cookie_name=="SpeakingCelpipEstimationResult") {
+            return DefaultCelpipSpeaking
         }
         
     } else {

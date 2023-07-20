@@ -4,16 +4,16 @@ import Header from '../components/header'
 
 import Footer from '../components/footer'
 import Cookies from 'js-cookie';
-import { GetEstimation, GetUserName, getCardColor, getBlurColor, GetStubText,GetOverallScoreText,GetBandScoreText,StringToMarkup,DefaultWriting } from '../components/functions'
+import { GetEstimation, GetUserName, getCardColor, getBlurColor, GetStubText,GetOverallScoreText,GetBandScoreText,StringToMarkup,DefaultCelpipWriting } from '../components/functions'
 
-const Writing = (props) => {
-    const [writingResults, setWritingResults] = useState(GetEstimation('WritingEstimationResult'))
+const CelpipWriting = (props) => {
+    const [writingResults, setWritingResults] = useState(GetEstimation('WritingCelpipEstimationResult'))
     const [showResults, setShowResults] = useState(false)
     const [taskDefinition, setTaskDefinition] = useState(getTaskDefinition())
     const [currentAnswer, setCurrentAnswer] = useState(getCurrentAnswer())
     const [wordCount, setWordCount] = useState("0");
     const [overall, setOverall] = useState(0)
-    const [time, setTime] = useState(40 * 60); // Время в секундах
+    const [time, setTime] = useState(23 * 60); // Время в секундах
     const [isRunning, setIsRunning] = useState(false);
     const [showInProgress, setShowInProgress] = useState(false)
 
@@ -126,11 +126,11 @@ const Writing = (props) => {
         })
     }
     function getCurrentAnswer() {
-        let cook = Cookies.get("CurrentAnswer")
+        let cook = Cookies.get("CelpipCurrentAnswer")
         if (typeof (cook) != "undefined") {
             return cook
         } else {
-            return DefaultWriting.results.answer
+            return DefaultCelpipWriting.results.answer
         }
     }
     const AnswerUpdate = e => {
@@ -151,28 +151,32 @@ const Writing = (props) => {
 
     }
     function updateTaskDefinition(inp) {
-        Cookies.set('TaskDefinition', inp);
+        Cookies.set('WritingCelpipTaskDefinition', inp);
         setTaskDefinition(inp)
     }
     function updateCurrentAnswer(inp) {
-        Cookies.set('CurrentAnswer', inp);
+        Cookies.set('CelpipCurrentAnswer', inp);
         setCurrentAnswer(inp)
     }
     function getTaskDefinition() {
-        let cook = Cookies.get("TaskDefinition")
+        let cook = Cookies.get("WritingCelpipTaskDefinition")
         if (typeof (cook) != "undefined") {
             return cook
         } else {
-            return DefaultWriting.results.question
+            return DefaultCelpipWriting.results.question
         }
     }
     async function GetTask() {
-        const response = await fetch("/getRandomTopic", {
+        const response = await fetch("/getRandomTopic?"+new URLSearchParams({
+            task_type: "writing",
+            test_type: "celpip"
+        }), {
             method: 'GET',
             headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json'
-            }
+            },
+            
         });
         const data = await response.json();
         setTaskDefinition(data.topic);
@@ -188,12 +192,13 @@ const Writing = (props) => {
             body: JSON.stringify({
                 question: taskDefinition,
                 answer: currentAnswer,
-                user: GetUserName()
+                user: GetUserName(),
+                test: "celpip"
             })
         });
         const data = await response.json();
         let json = JSON.stringify(data);
-        Cookies.set('WritingEstimationResult', json);
+        Cookies.set('WritingCelpipEstimationResult', json);
         setWritingResults(data)
         setShowInProgress(false)
         setShowResults(true)
@@ -285,4 +290,4 @@ const Writing = (props) => {
     )
 }
 
-export default Writing
+export default CelpipWriting
