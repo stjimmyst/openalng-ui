@@ -69,13 +69,17 @@ const Prices = React.forwardRef((props, ref) => {
 									</li>
 
 									<li className="prices__list-element">
-										<p className="prices__name">Errors
-											checking</p>
+										<p className="prices__name">Mistakes correction</p>
 										<p className="prices__value">N/A</p>
 									</li>
 
 									<li className="prices__list-element">
-										<p className="prices__name">Improvements</p>
+										<p className="prices__name">Paraphrasing</p>
+										<p className="prices__value">N/A</p>
+									</li>
+
+									<li className="prices__list-element">
+										<p className="prices__name">Grammar rules</p>
 										<p className="prices__value">N/A</p>
 									</li>
 
@@ -162,13 +166,17 @@ const Prices = React.forwardRef((props, ref) => {
 									</li>
 
 									<li className="prices__list-element">
-										<p className="prices__name">Errors
-											checking</p>
+										<p className="prices__name">Mistakes correction</p>
 										<p className="prices__value prices__value_yes">YES</p>
 									</li>
 
 									<li className="prices__list-element">
-										<p className="prices__name">Improvements</p>
+										<p className="prices__name">Paraphrasing</p>
+										<p className="prices__value prices__value_yes">YES</p>
+									</li>
+
+									<li className="prices__list-element">
+										<p className="prices__name">Grammar rules</p>
 										<p className="prices__value prices__value_yes">YES</p>
 									</li>
 

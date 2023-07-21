@@ -102,14 +102,17 @@ const Header = React.forwardRef((props, ref) => {
             </div>
             <nav class="mob-nav__nav">
                 <ul class="mob-nav__nav-list" onClick={()=>changeCloseStatus()}>
-                    <li class="header__nav-element">
+                    {/* <li class="header__nav-element">
                         <a href="/" class="header__nav-link">About</a>
-                    </li>
+                    </li> */}
                     <li class="header__nav-element">
                         <a href="/writing" class="header__nav-link">Writing</a>
                     </li>
                     <li class="header__nav-element">
                         <a href="/speaking" class="header__nav-link">Speaking</a>
+                    </li>
+                    <li class="header__nav-element">
+                        <a href="/#price" class="header__nav-link">Prices</a>
                     </li>
                     <li class="header__nav-element">
                         <a href="/contacts" class="header__nav-link">Contacts</a>
@@ -133,10 +136,10 @@ const Header = React.forwardRef((props, ref) => {
                 </a>
                 <nav className="header__nav">
                     <ul className="header__nav-list">
-                        <li className="header__nav-element">
-                            {/* <Link to="/" className="header__nav-link">About</Link> */}
+                        {/* <li className="header__nav-element">
+                            
                             <a href="/" className="header__nav-link">About</a>
-                        </li>
+                        </li> */}
                         <li className="header__nav-element">
                             {/* <Link to="/writing" className="header__nav-link">Writing</Link> */}
                             <a href="/writing" className="header__nav-link">Writing</a>
@@ -145,6 +148,10 @@ const Header = React.forwardRef((props, ref) => {
                         <li className="header__nav-element">
                             {/* <a href="speaking.html" className="header__nav-link">Speaking</a> */}
                             <a href="/speaking" className="header__nav-link">Speaking</a>
+                        </li>
+                        <li className="header__nav-element">
+                            {/* <a href="speaking.html" className="header__nav-link">Speaking</a> */}
+                            <a href="/#price" className="header__nav-link">Prices</a>
                         </li>
                         <li className="header__nav-element">
                             <a href="/contacts" className="header__nav-link">Contacts</a>
