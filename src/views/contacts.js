@@ -32,7 +32,7 @@ const Contacts = (props) => {
 						</a>
 						<div class="how-it-work__element">
 							<img src="img/_src/email.png" alt="" class="how-it-work__icon"/>
-							<h3 class="how-it-work__title" >dmitry@openlang.one
+							<h3 class="how-it-work__title" >openlang@openlang.one
 							</h3>
 						</div>
 					</div>
