@@ -18,11 +18,11 @@ const Footer = (props) => {
 					</ul>
 				</nav>
 				<p className="footer__description">OpenLang was developed to check essays from the IELTS Writing Task 2 and
-					Letters/Charts from Task 1. The service helps students practice writing for IELTS and improve their
+					Letters/Charts from Task 1, CELPIP Writing Task 1/Task 2. The service helps students practice writing for IELTS/CELPIP and improve their
 					writing skills. By using this site, you agree to read and accept our terms of use, refund policy and
 					privacy policy. IELTS is a registered trademark of University of Cambridge ESOL, the
-					British Council, and IDP Education Australia. OpenLang is not affiliated, approved or endorsed by
-					the University of Cambridge ESOL, the British Council, and IDP Education Australia. All other
+					British Council, and IDP Education Australia. CELPIP is a registered trademark of the University of British Columbia, who are not involved in the production of, and do not endorse this information or publications. OpenLang is not affiliated, approved or endorsed by
+					the University of Cambridge ESOL, the British Council, University of British Columbia and IDP Education Australia.  All other
 					trademarks on this website are the property of their respective owners.</p>
 				<p className="footer__copy">OpenLang© 2023. All rights reserved.</p>
 			</div>
