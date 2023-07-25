@@ -27,7 +27,7 @@ return (
 						</div>
 					</div>
 					<div className="btn-row how-it-work__btn-row">
-						<a href="#price" className="btnV2">Write now</a>
+						<a href="/writing" className="btnV2">Write now</a>
 					</div>
 				</div>
 			</section>

@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useState, useEffect, useRef,useReducer, useContext} from 'react'
 import { Link } from 'react-router-dom'
 import PropTypes from 'prop-types'
 
@@ -6,7 +6,16 @@ import { googleLogout, useGoogleLogin } from '@react-oauth/google';
 import axios from 'axios';
 import Cookies from 'js-cookie';
 
+import UserContext from './user';
+
+function reducer(state, item) {
+    return [...state, item]
+  }
+
 const Header = React.forwardRef((props, ref) => {
+
+    const { isAuth, setIsAuth } = useContext(UserContext);
+    
     const [user, setUser] = useState([]);
     const [profile, setProfile] = useState([]);
     const [status, setStatus] = useState("mob-nav");
@@ -49,7 +58,9 @@ const Header = React.forwardRef((props, ref) => {
     const login = useGoogleLogin({
         onSuccess: (codeResponse) => {
             Cookies.set('usertoken', codeResponse.access_token, { expires: 7 });
+            
             setUser(codeResponse)
+            setIsAuth(true)
 
         },
         onError: (error) => console.log('Login Failed:', error)
@@ -61,6 +72,7 @@ const Header = React.forwardRef((props, ref) => {
         Cookies.remove('userprofile');
         Cookies.remove('userlevel')
         setProfile([]);
+        setIsAuth(false)
     };
 
     useEffect(
@@ -136,21 +148,21 @@ const Header = React.forwardRef((props, ref) => {
                 </a>
                 <nav className="header__nav">
                     <ul className="header__nav-list">
-                        {/* <li className="header__nav-element">
-                            
-                            <a href="/" className="header__nav-link">About</a>
-                        </li> */}
                         <li className="header__nav-element">
-                            {/* <Link to="/writing" className="header__nav-link">Writing</Link> */}
+                           
                             <a href="/writing" className="header__nav-link">Writing</a>
                         </li>
-                        {/* <Link to="/speaking" className="header__nav-link">Speaking</Link> */}
+                       
                         <li className="header__nav-element">
-                            {/* <a href="speaking.html" className="header__nav-link">Speaking</a> */}
+                            
                             <a href="/speaking" className="header__nav-link">Speaking</a>
                         </li>
+                        {/* <li className="header__nav-element">
+                            
+                            <a href="/reading_ielts" className="header__nav-link">Reading</a>
+                        </li> */}
                         <li className="header__nav-element">
-                            {/* <a href="speaking.html" className="header__nav-link">Speaking</a> */}
+                            
                             <a href="/#price" className="header__nav-link">Prices</a>
                         </li>
                         <li className="header__nav-element">

@@ -136,7 +136,9 @@ const CelpipSpeaking = (props) => {
                     <div className="sec-info__rignt">
                         <p className="sec-info__text-element">{StringToMarkup(speakingResults.results.recommendations[key].comment)}</p>
                     </div>
-                    <div className="sec-info__element-error">{GetStubText(speakingResults.results.level)}</div>
+                    <div className="sec-info__element-error">
+                        {GetStubText(speakingResults.results.level)}
+                        </div>
                 </div>
             )
         })
