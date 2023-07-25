@@ -9,7 +9,6 @@ import WritingGeneral from './views/writing_general';
 import SpeakingGeneral from './views/speaking-general';
 import IeltsWriting from './views/ielts-writing';
 import IeltsSpeaking from './views/ielts-speaking';
-// import IeltsReading from './views/ielts-reading';
 import CelpipWriting from './views/celpip-writing';
 import CelpipSpeaking from './views/celpip-speaking';
 
@@ -17,9 +16,7 @@ import Contacts from './views/contacts';
 import DMCA from './views/dmca';
 import Privacy from './views/privacy';
 import Terms from './views/terms';
-import UserContext from './components/user';
 
- 
 const App = () => {
   const [isAuth, setIsAuth] = useState(false);
   const value = { isAuth, setIsAuth };

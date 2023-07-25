@@ -29,7 +29,7 @@ return (
 						</div>
 					</div>
 					<div class="btn-row how-it-work__btn-row">
-						<a href="#price" class="btnV2">Speak now</a>
+						<a href="/speaking" class="btnV2">Speak now</a>
 					</div>
 				</div>
 			</section>
