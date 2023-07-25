@@ -11,6 +11,7 @@ import IeltsWriting from './views/ielts-writing';
 import IeltsSpeaking from './views/ielts-speaking';
 import CelpipWriting from './views/celpip-writing';
 import CelpipSpeaking from './views/celpip-speaking';
+import UserContext from './components/user';
 
 import Contacts from './views/contacts';
 import DMCA from './views/dmca';
