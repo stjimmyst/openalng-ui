@@ -18,7 +18,7 @@ import { GoogleAuthProvider } from "firebase/auth";
 //   messagingSenderId: "443567752530",
 //   appId: "1:443567752530:web:d5e4a8afa3149c722ea68b",
 //   measurementId: "G-YFQFGB59TP"
-// };
+// dfdf};
 
 const firebaseConfig = {
   apiKey: "AIzaSyBTqX_N7s-F8-_mBw1AeimPZB42re5C7hk",

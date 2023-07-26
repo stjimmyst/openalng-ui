@@ -1,16 +1,37 @@
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useState, useEffect, useRef, useContext } from 'react'
 import MobNav from '../components/mob_nav'
 import Header from '../components/header'
 
 import Footer from '../components/footer'
+import UserContext from '../components/user'
 
 const WritingGeneral = (props) => {
+    const ref = useRef(null);
+    const priceRef = useRef(null);
+    const { isAuth, setIsAuth } = useContext(UserContext);
+
+    function handleClick() {
+        console.log(ref)
+        if (ref.current != null) {
+            ref.current.click();
+        } else {
+
+        }
+    }
+
+    function dynamicButton(href_link) {
+        if (isAuth) {
+            return (<a class="btnV2" href={href_link}>Practice</a>)
+        } else {
+            return (<a class="btnV2" target="_blank" onClick={handleClick} >Practice</a>)
+        }
+    }
 
 
     return (
         <>
             <MobNav></MobNav>
-            <Header></Header>
+            <Header ref={ref}></Header>
             <main className="main">
                 <section className="sec-info recommend-sec sec-info_active">
                     <div className="container-info">
@@ -19,7 +40,7 @@ const WritingGeneral = (props) => {
                                 English
                             </h1>
                         </div> */}
-                        
+
                         <div className="sec-info__elements-wrapper">
                             <div className="sec-info__element only-login-user">
                                 <div className="sec-info__left">
@@ -41,7 +62,7 @@ const WritingGeneral = (props) => {
                                     <p className="sec-info__text-element">Total time for IELTS Speaking part: ~ 60 minutes</p>
                                     <br />
                                     <p className="sec-info__text-element">There are 4 main criterias in the IELTS Writing:</p>
-                                    <br/>
+                                    <br />
                                     <p className="sec-info__text-element">- Task achievement/response</p>
                                     <p className="sec-info__text-element">- Coherence and cohesion</p>
                                     <p className="sec-info__text-element">- Lexical resource</p>
@@ -50,7 +71,8 @@ const WritingGeneral = (props) => {
                                     <br />
                                     <a href="https://www.ielts.org/for-test-takers/test-format">More info on the official website</a>
                                     <div class="btn-row front-sec__btn-row">
-                                        <a class="btnV2" href='/writing_ielts'>Practice</a>
+
+                                        {dynamicButton("/writing_ielts")}
                                     </div>
                                 </div>
                             </div>
@@ -74,7 +96,7 @@ const WritingGeneral = (props) => {
                                     <p className="sec-info__text-element">Total time for CELPIP Writing part: ~ 53-60 minutes</p>
                                     <br />
                                     <p className="sec-info__text-element">There are 4 main criterias in the CELPIP:</p>
-                                    <br/>
+                                    <br />
                                     <p className="sec-info__text-element">- Content/Coherence</p>
                                     <p className="sec-info__text-element">- Vocabulary</p>
                                     <p className="sec-info__text-element">- Readability</p>
@@ -83,7 +105,7 @@ const WritingGeneral = (props) => {
                                     <br />
                                     <a href="https://www.celpip.ca/celpip-general/">More info on the official website</a>
                                     <div class="btn-row front-sec__btn-row">
-                                        <a class="btnV2" href='/writing_celpip'>Practice</a>
+                                        {dynamicButton("/writing_celpip")}
                                     </div>
                                 </div>
                             </div>
@@ -109,7 +131,7 @@ const WritingGeneral = (props) => {
                                     <p className="sec-info__text-element">Total time for IELTS Writing part: ~ 60 minutes</p>
                                     <br />
                                     <p className="sec-info__text-element">There are 4 main criterias in the IELTS Writing:</p>
-                                    <br/>
+                                    <br />
                                     <p className="sec-info__text-element">- Task achievement/response</p>
                                     <p className="sec-info__text-element">- Coherence and cohesion</p>
                                     <p className="sec-info__text-element">- Lexical resource</p>

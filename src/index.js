@@ -12,6 +12,8 @@ import IeltsSpeaking from './views/ielts-speaking';
 import CelpipWriting from './views/celpip-writing';
 import CelpipSpeaking from './views/celpip-speaking';
 import UserContext from './components/user';
+// import IeltsReading from './views/ielts-reading';
+import { GetUserToken } from './components/functions';
 
 import Contacts from './views/contacts';
 import DMCA from './views/dmca';
@@ -19,8 +21,17 @@ import Privacy from './views/privacy';
 import Terms from './views/terms';
 
 const App = () => {
-  const [isAuth, setIsAuth] = useState(false);
+  const [isAuth, setIsAuth] = useState(checkUserState());
   const value = { isAuth, setIsAuth };
+
+  function checkUserState() {
+    var tp = GetUserToken()
+    if (tp == "undefined") {
+      return false
+    } else {
+      return true
+    }
+  }
 
   useEffect(
     () => {

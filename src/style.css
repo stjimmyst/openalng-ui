@@ -1883,30 +1883,92 @@ ul {
   /* background-color: #646262; */
   padding: 30px;
 }
-.question-item {
+
+
+
+/* --selector questsion */
+.question-item-selector {
   width: 100%;
   padding: 30px;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: row;
-  
-  /* background-color: #646262; */
 }
-.question-item-number {
+
+.question-item-selector .number {
   width: 5%;
 }
-.question-item-text {
+
+.question-item-selector .text {
   flex-direction: row;
   display: flex;
   width: 90%;
   align-items: flex-start;
   flex-wrap: wrap
 }
-.question-item-text-part {
-  height: 20px;
-}
-.question-item-value-dropdown {
+
+.question-item-selector .selector {
   width: 5%;
 }
+
+.question-item-selector .element {
+  background-color: inherit;
+}
+
+/* fill the gap question */
+.question-item-gap {
+  width: 100%;
+  padding: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+}
+.question-item-gap .text {
+  flex-direction: row;
+  display: flex;
+  width: 95%;
+  align-items: flex-start;
+  flex-wrap: wrap
+}
+
+.question-item-gap .number {
+  width: 5%;
+}
+
+.question-item-gap .text-block {
+  height: 20px;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+.question-item-gap .gap {
+  height: 20px;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  background-color: inherit;
+}
+
+.question-item-gap .element {
+  background-color: inherit;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+/* fill the gaps styled */
+.question-item-gaps-styled {
+  width: 100%;
+  flex-direction: row;
+}
+
+.question-item-gaps-styled-element {
+  background-color: inherit;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
 

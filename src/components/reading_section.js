@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react'
 
 import DropDown from './dropdown';
 import FillTheGapsQuestion from './fillthegaps_question';
+import FillTheGapsStyledText from './fillthegaps_styled_text';
 
 const ReadingSection = (props) => {
 
@@ -98,22 +99,22 @@ const ReadingSection = (props) => {
 										<div className="question-text">
 											<h3>Do the following statements agree with the information givenen in the text?</h3>
 										</div>
-										<div className="question-item">
-											<div className='question-item-number'>
+										<div className="question-item-selector">
+											<div className='number'>
 												1
 											</div>
-											<div className='question-item-text'>
+											<div className='text'>
 												Write the correct letter DropDown type
 											</div>
-											<div className='question-item-text-dropdown'>
+											<div className='selector'>
 												<DropDown></DropDown>
 											</div>
 										</div>
-										<div className="question-item">
-											<div className='question-item-number'>
+										<div className="question-item-gap">
+											<div className='number'>
 												2
 											</div>
-											<div className='question-item-text'>
+											<div className='text'>
 												<FillTheGapsQuestion></FillTheGapsQuestion>
 											</div>
 										</div>
@@ -122,13 +123,14 @@ const ReadingSection = (props) => {
 										<div className="question-text">
 											<h3>DSome question description 2</h3>
 										</div>
-										<div className="question-item">
-											<div className='question-item-number'>
-												3
-											</div>
-											<div className='question-item-text'>
-												some text
-											</div>
+										<div className="question-item-gaps-styled">
+											{/* <h1>text1</h1>
+											<h2>text2</h2>
+											<h3>text3</h3>
+											some text
+											some another text
+											<input className="element" type="text" id="name"></input> */}
+										<FillTheGapsStyledText></FillTheGapsStyledText>
 										</div>
 									</div>
 
