@@ -12,7 +12,7 @@ import IeltsSpeaking from './views/ielts-speaking';
 import CelpipWriting from './views/celpip-writing';
 import CelpipSpeaking from './views/celpip-speaking';
 import UserContext from './components/user';
-import IeltsReading from './views/ielts-reading';
+// import IeltsReading from './views/ielts-reading';
 import { GetUserToken } from './components/functions';
 
 import Contacts from './views/contacts';
@@ -51,7 +51,7 @@ const App = () => {
         <Route component={SpeakingGeneral} exact path="/speaking" />
         <Route component={IeltsWriting} exact path="/writing_ielts" />
         <Route component={IeltsSpeaking} exact path="/speaking_ielts" />
-        <Route component={IeltsReading} exact path="/reading_ielts" />
+        {/* <Route component={IeltsReading} exact path="/reading_ielts" /> */}
         <Route component={CelpipWriting} exact path="/writing_celpip" />
         <Route component={CelpipSpeaking} exact path="/speaking_celpip" />
         <Route component={Contacts} exact path="/contacts" />
