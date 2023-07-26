@@ -1,15 +1,37 @@
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useState, useEffect, useRef, useContext } from 'react'
 import MobNav from '../components/mob_nav'
 import Header from '../components/header'
 
 import Footer from '../components/footer'
+import UserContext from '../components/user'
 
 const SpeakingGeneral = (props) => {
-    
+    const ref = useRef(null);
+    const priceRef = useRef(null);
+    const { isAuth, setIsAuth } = useContext(UserContext);
+
+    function handleClick() {
+        console.log(ref)
+        if (ref.current != null) {
+            ref.current.click();
+        } else {
+
+        }
+    }
+
+    function dynamicButton(href_link) {
+        if (isAuth) {
+            return (<a class="btnV2" href={href_link}>Practice</a>)
+        } else {
+            return (<a class="btnV2" target="_blank" onClick={handleClick} >Practice</a>)
+        }
+    }
+
+
     return (
         <>
             <MobNav></MobNav>
-            <Header></Header>
+            <Header ref={ref}></Header>
             <main className="main">
                 <section className="sec-info recommend-sec sec-info_active">
                     <div className="container-info">
@@ -18,7 +40,7 @@ const SpeakingGeneral = (props) => {
                                 English
                             </h1>
                         </div> */}
-                        
+
                         <div className="sec-info__elements-wrapper">
                             <div className="sec-info__element only-login-user">
                                 <div className="sec-info__left">
@@ -40,7 +62,7 @@ const SpeakingGeneral = (props) => {
                                     <p className="sec-info__text-element">Total time for IELTS Speaking part: ~ 11-12 minutes</p>
                                     <br />
                                     <p className="sec-info__text-element">There are 4 main criterias in the IELTS Speaking:</p>
-                                    <br/>
+                                    <br />
                                     <p className="sec-info__text-element">- Fluency and coherence</p>
                                     <p className="sec-info__text-element">- Lexical resource</p>
                                     <p className="sec-info__text-element">- Grammatical range and accuracy</p>
@@ -49,7 +71,17 @@ const SpeakingGeneral = (props) => {
                                     <br />
                                     <a href="https://www.ielts.org/for-test-takers/test-format">More info on the official website</a>
                                     <div class="btn-row front-sec__btn-row">
-                                        <a class="btnV2" href='/speaking_ielts'>Practice</a>
+                                        
+                                        {isAuth == true ? (
+
+                                            <a class="btnV2" href='/speaking_ielts'>Practice</a>
+                                            // <a href="/speaking_ielts" class="btnV3 prices__btn" target="_self">Try</a>
+
+                                        ) : (
+                                            <a class="btnV2" target="_blank" onClick={handleClick} >Practice</a>
+
+                                        )}
+
                                     </div>
                                 </div>
                             </div>
@@ -73,7 +105,7 @@ const SpeakingGeneral = (props) => {
                                     <p className="sec-info__text-element">Total time for CELPIP Speaking part: ~ 15-20 minutes</p>
                                     <br />
                                     <p className="sec-info__text-element">There are 4 main criterias in the CELPIP Speaking Part:</p>
-                                    <br/>
+                                    <br />
                                     <p className="sec-info__text-element">- Content/Coherence</p>
                                     <p className="sec-info__text-element">- Vocabulary</p>
                                     <p className="sec-info__text-element">- Listenability</p>
@@ -82,7 +114,15 @@ const SpeakingGeneral = (props) => {
                                     <br />
                                     <a href="https://www.celpip.ca/celpip-general/">More info on the official website</a>
                                     <div class="btn-row front-sec__btn-row">
-                                        <a class="btnV2" href='/speaking_celpip'>Practice</a>
+                              
+                                        {isAuth == true ? (
+
+                                            <a class="btnV2" href='/speaking_celpip'>Practice</a>
+                                            
+                                        ) : (
+                                            <a class="btnV2" target="_blank" onClick={handleClick} >Practice</a>
+
+                                        )}
                                     </div>
                                 </div>
                             </div>
