@@ -7,7 +7,6 @@ import axios from 'axios';
 import Cookies from 'js-cookie';
 
 import UserContext from './user';
-import Login from './auth/login';
 
 function reducer(state, item) {
     return [...state, item]
