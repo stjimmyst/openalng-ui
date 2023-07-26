@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useRef,useReducer, useContext} from 'react'
-import { Link } from 'react-router-dom'
 import PropTypes from 'prop-types'
 
 import { googleLogout, useGoogleLogin } from '@react-oauth/google';
@@ -7,7 +6,6 @@ import axios from 'axios';
 import Cookies from 'js-cookie';
 
 import UserContext from './user';
-import Login from './auth/login';
 
 function reducer(state, item) {
     return [...state, item]
