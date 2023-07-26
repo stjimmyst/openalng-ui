@@ -1,6 +1,4 @@
 import * as React from 'react';
-import Box from '@mui/material/Box';
-import TextField from '@mui/material/TextField';
 import { FillInTheGapsSplitter } from './functions';
 import PropTypes from 'prop-types'
 
@@ -14,24 +12,16 @@ const FillTheGapsQuestion = (props) => {
 
   function processInput() {
     const blocks = props.question_text.split(FillInTheGapsSplitter);
-    return blocks.map(elem => {
-      console.log(elem)
+    const rowLen = blocks.length;
+    return blocks.map((elem,i) => {
       return (
         <>
-        <div className='question-item-text-part'>
-        {elem}
-        </div>
-        
-        <Box
-      component="form"
-      sx={{
-        '& > :not(style)': { m: 1, width: '100px', height: '100px' },
-      }}
-      noValidate
-      autoComplete="off"
-    >
-      <TextField id="standard-basic" variant="standard" />
-    </Box>
+          <div className="text-block">
+            <>{elem}</>
+          </div>
+          {i+1 != rowLen ?(<div className="gap">
+            <input className="element" type="text" id="name"></input>
+          </div>):(<></>)}
         </>
       )
     })
@@ -44,10 +34,10 @@ const FillTheGapsQuestion = (props) => {
 
 FillTheGapsQuestion.defaultProps = {
   question_text: "Some text with the replacement and user text input __FILLTHEGAPS__ for fill the gaps ",
-  }
-  
-  FillTheGapsQuestion.propTypes = {
-    question_text: PropTypes.string,
-  }
+}
+
+FillTheGapsQuestion.propTypes = {
+  question_text: PropTypes.string,
+}
 
 export default FillTheGapsQuestion
