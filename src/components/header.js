@@ -7,6 +7,7 @@ import axios from 'axios';
 import Cookies from 'js-cookie';
 
 import UserContext from './user';
+import Login from './auth/login';
 
 function reducer(state, item) {
     return [...state, item]
@@ -55,6 +56,7 @@ const Header = React.forwardRef((props, ref) => {
         console.log(`${process.env.REACT_APP_USER_SUBSCRIPTIONS}`)
 
     }
+
     const login = useGoogleLogin({
         onSuccess: (codeResponse) => {
             Cookies.set('usertoken', codeResponse.access_token, { expires: 7 });
