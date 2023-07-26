@@ -1,4 +1,4 @@
-{
+{ 
   "proxy": "http://10.24.130.133:5000/",
   "name": "openlang",
   "version": "1.0.0",
