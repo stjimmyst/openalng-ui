@@ -111,7 +111,7 @@
 }
 
 .slick-loading .slick-list {
-  background: #fff url(ajax-loader.gif) center center no-repeat
+  background: #fff center center no-repeat
 }
 
 .slick-next,
@@ -1789,7 +1789,24 @@ ul {
   flex-direction: column;
   display: flex;
   padding: 1%;
+  text-align: center;
 }
+
+.error-container {
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  display: flex;
+  padding: 1%;
+  text-align: center;
+}
+.error-container .p {
+  color: #ad3333;
+}
+
+
 .loader {
   border: 8px solid #f3f3f3; /* Light grey */
   border-top: 8px solid #15be4a; /* Blue */
@@ -1798,6 +1815,7 @@ ul {
   height: 60px;
   animation: spin 2s linear infinite;
 }
+
 
 @keyframes spin {
   0% { transform: rotate(0deg); }

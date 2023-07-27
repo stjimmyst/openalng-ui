@@ -35,7 +35,6 @@ const Header = React.forwardRef((props, ref) => {
 		}
     }
     async function LoginBackend(inpprofile) {
-        console.log(inpprofile)
         const response = await fetch("/login", {
             method: 'POST',
             headers: {
@@ -48,10 +47,7 @@ const Header = React.forwardRef((props, ref) => {
         });
         const data = await response.json();
         let json = JSON.stringify(data);
-        console.log(json);
         Cookies.set('userlevel', data.level);
-        console.log(`${process.env.NODE_ENV}`)
-        console.log(`${process.env.REACT_APP_USER_SUBSCRIPTIONS}`)
 
     }
 
