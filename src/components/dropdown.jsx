@@ -6,47 +6,32 @@ import * as React from 'react';
 import PropTypes from 'prop-types'
 
 const DropDown = (props) => {
-  const [age, setAge] = React.useState('');
 
-  const handleChange = (event) => {
-    setAge(event.target.value);
-  };
-
-  function generateList() {
-
-    return props.choice_list.map(elem => {
-      console.log(elem)
+  function generateList(items, id) {
+    return items.map(elem => {
       return (<option value={elem}>{elem}</option>)
     })
   }
 
   return (
-    // <Box sx={{ minWidth: 40 }}>
-    //   <FormControl fullWidth>
-    //     <NativeSelect
-    //       defaultValue={30}
-    //       inputProps={{
-    //         name: 'age',
-    //         id: 'uncontrolled-native',
-    //       }}
-    //     >
-    //         {generateList()}
-    //     </NativeSelect>
-    //   </FormControl>
-    // </Box>
-    <select className="element">
-      {generateList()}
+    <select className="readingquestion element" id={props.item_uuid} data-item_number={props.item_number}>
+      <option value="select" disabled selected hidden></option>
+      {generateList(props.item_values)}
     </select>
 
   );
 }
 
 DropDown.defaultProps = {
-  choice_list: ["A", "B", "C"],
+  item_uuid: "id",
+  item_number: 1,
+  item_values: ["A", "B", "C"],
 }
 
 DropDown.propTypes = {
-  choice_list: PropTypes.arrayOf(PropTypes.string),
+  item_uuid: PropTypes.string,
+  item_number: PropTypes.number,
+  item_values: PropTypes.arrayOf(PropTypes.string),
 }
 
 export default DropDown

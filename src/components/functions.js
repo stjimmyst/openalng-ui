@@ -3,7 +3,11 @@ import Cookies from 'js-cookie';
 import { googleLogout, useGoogleLogin } from '@react-oauth/google';
 import axios from 'axios';
 
-export const FillInTheGapsSplitter = "__FILLTHEGAPS__"
+export const FillInTheGapsSplitter = "__"
+export const MatchingQuestionType = "matching"
+export const GapQuestionType = "gap"
+export const GapsStyledTextQuestionType = "gaps-styled-text"
+export const SelectQuestionType = "select"
 
 export const DefaultIeltsSpeaking = {
     question: "This is example IELTS Speaking Task 2.\n\nDescribe a successful businessman/businesswoman that you know. You should say:\n- Who he/she is and how you know her/him;\n- What her/his business is;\n- How you think this persons's business will do in the future;\n- Why do you think he/she is successful.",
@@ -274,6 +278,8 @@ export function GetEstimation(cookie_name) {
             return DefaultCelpipWriting
         } else if (cookie_name=="SpeakingCelpipEstimationResult") {
             return DefaultCelpipSpeaking
+        } else if (cookie_name == "ReadingIeltsEstimationResult") {
+            return ""
         }
         
     } else {

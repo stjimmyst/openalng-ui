@@ -120,6 +120,9 @@ const Header = React.forwardRef((props, ref) => {
                         <a href="/speaking" class="header__nav-link">Speaking</a>
                     </li>
                     <li class="header__nav-element">
+                        <a href="/reading" class="header__nav-link">Reading</a>
+                    </li>
+                    <li class="header__nav-element">
                         <a href="/#price" class="header__nav-link">Prices</a>
                     </li>
                     <li class="header__nav-element">
@@ -152,6 +155,10 @@ const Header = React.forwardRef((props, ref) => {
                         <li className="header__nav-element">
                             
                             <a href="/speaking" className="header__nav-link">Speaking</a>
+                        </li>
+                        <li className="header__nav-element">
+                            
+                            <a href="/reading" className="header__nav-link">Reading</a>
                         </li>
                         {/* <li className="header__nav-element">
                             

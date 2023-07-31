@@ -7,7 +7,7 @@ const Footer = (props) => {
 				<nav className="footer__nav">
 					<ul className="footer__nav-list">
 						<li className="footer__nav-element">
-							<a href="/dmca" className="footer__nav-link">Dmca</a>
+							<a href="/dmca" className="footer__nav-link">DMCA</a>
 						</li>
 						<li className="footer__nav-element">
 							<a href="/terms" className="footer__nav-link">Terms and conditions</a>
