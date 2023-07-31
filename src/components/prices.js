@@ -91,6 +91,12 @@ const Prices = React.forwardRef((props, ref) => {
 								</li>
 
 								<li className="prices__list-element">
+									<p className="prices__name">Reading
+										key explanation</p>
+									<p className="prices__value">N/A</p>
+								</li>
+
+								<li className="prices__list-element">
 									<p className="prices__name">Overall score</p>
 									<p className="prices__value">N/A</p>
 								</li>
@@ -192,6 +198,12 @@ const Prices = React.forwardRef((props, ref) => {
 								<li className="prices__list-element">
 									<p className="prices__name">Speaking
 										estimation</p>
+									<p className="prices__value prices__value_yes">YES</p>
+								</li>
+
+								<li className="prices__list-element">
+									<p className="prices__name">Reading
+										key explanation</p>
 									<p className="prices__value prices__value_yes">YES</p>
 								</li>
 
